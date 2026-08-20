@@ -34,8 +34,11 @@ A modern, responsive, and interactive personal portfolio website showcasing proj
 
 Contact & Connect
 Name: Joanna Michelle Tambunan
+
 Email: joannatambunan496@gmail.com
+
 LinkedIn: linkedin.com/in/joannamt
+
 GitHub: github.com/michellejooo
 Instagram: @joannamt_
 
