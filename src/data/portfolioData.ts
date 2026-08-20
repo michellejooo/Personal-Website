@@ -1,8 +1,16 @@
 import { Skill, Project, ExperienceItem, Certification, LanguageItem } from '../types';
+import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
+import projectPortfolioImg from '../assets/images/project_portfolio_1785572143262.jpg';
+import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
+import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
+import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
+
+export const PROFILE_AVATAR = profileAvatarImg;
 
 export const PROFILE_DATA = {
   name: 'Joanna',
   title: 'Information Technology Student',
+  avatar: profileAvatarImg,
   subTitle: 'Joanna | Web Dev Enthusiast',
   roles: ['Web Dev Enthusiast', 'AI Engineer', 'System Analyst',],
   introduction:
@@ -65,7 +73,7 @@ export const PROJECTS_DATA: Project[] = [
       'Engineered with a clean deep-red aesthetic (#7A0000), supporting smooth light and dark modes, responsive layouts, Framer Motion transitions, and an embedded Spotify jams player.',
     techStack: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
     category: 'Web Development',
-    image: '/src/assets/images/project_portfolio_1785572143262.jpg',
+    image: projectPortfolioImg,
     status: 'Live / Active',
     githubUrl: 'https://github.com/michellejooo/Personal-Website',
     liveUrl: '#',
@@ -86,7 +94,7 @@ export const PROJECTS_DATA: Project[] = [
       'Travelyuk simplifies travel planning through real-time seat availability searches, automated ticket generation, interactive maps, and PostgreSQL reservation management.',
     techStack: ['Next.js', 'Express.js', 'PostgreSQL', 'Tailwind CSS'],
     category: 'Full Stack',
-    image: '/src/assets/images/project_travelyuk_1785572114052.jpg',
+    image: projectTravelyukImg,
     status: 'Completed',
     githubUrl: 'https://github.com/joanna-dev/travelyuk-booking',
     liveUrl: '#',
@@ -106,7 +114,7 @@ export const PROJECTS_DATA: Project[] = [
       'Echo is a high-fidelity web music streaming player with custom audio spectrum visualizations, personalized playlist creation, and seamless audio playback control.',
     techStack: ['Next.js', 'React', 'Express.js', 'PostgreSQL', 'Tailwind CSS'],
     category: 'Full Stack',
-    image: '/src/assets/images/project_echo_1785572129795.jpg',
+    image: projectEchoImg,
     status: 'Featured',
     githubUrl: 'https://github.com/joanna-dev/echo-music-streaming',
     liveUrl: '#',
@@ -126,7 +134,7 @@ export const PROJECTS_DATA: Project[] = [
       'A comprehensive data analytics platform leveraging Python, Pandas, SQL, and interactive charts. Enables automated dataset cleaning, KPI metrics monitoring, cohort visualization, and custom analytical report exports.',
     techStack: ['Python', 'Pandas', 'SQL', 'Power BI', 'React', 'Recharts'],
     category: 'Data Analytics',
-    image: '/src/assets/images/project_data_analysis_1785683601973.jpg',
+    image: projectDataAnalysisImg,
     status: 'Live App',
     githubUrl: 'https://github.com/joanna-dev/data-analysis-insights',
     liveUrl: 'https://ai.studio/apps/2843d2da-a43f-4f89-84b7-864f84ee6499',

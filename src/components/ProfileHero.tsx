@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { PROFILE_DATA } from '../data/portfolioData';
+import { PROFILE_DATA, PROFILE_AVATAR } from '../data/portfolioData';
 import { MusicSection } from './MusicSection';
 import {
   FolderGit2,
@@ -82,7 +82,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
 
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
                 <img
-                  src="/src/assets/images/regenerated_image_1786096085071.jpg"
+                  src={PROFILE_AVATAR}
                   alt="Joanna - Information Technology Student"
                   className="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500"
                   referrerPolicy="no-referrer"
