@@ -32,21 +32,6 @@ A modern, responsive, and interactive personal portfolio website showcasing proj
 
 ---
 
-🚀 Getting Started Locally
-
-1. Clone the repository
-```bash
-git clone https://github.com/michellejooo/Personal-Website.git
-cd Personal-Website
-npm install
-npm run dev
-npm run build
-
-2. Deplyoing vercel
-git add .
-git commit -m "Update portfolio"
-git push origin main
-
 Contact & Connect
 Name: Joanna Michelle Tambunan
 Email: joannatambunan496@gmail.com
