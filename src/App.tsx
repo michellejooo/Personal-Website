@@ -7,7 +7,6 @@ import { ExperienceSection } from './components/ExperienceSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { ResumeModal } from './components/ResumeModal';
 import { ProjectPreviewModal } from './components/ProjectPreviewModal';
 import { NotFoundView } from './components/NotFoundView';
 import { Project } from './types';
@@ -26,7 +25,6 @@ export default function App() {
   });
 
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [resumeOpen, setResumeOpen] = useState(false);
   const [previewProject, setPreviewProject] = useState<Project | null>(null);
   const [previewMode, setPreviewMode] = useState<'live' | 'code'>('live');
   const [show404, setShow404] = useState(false);
@@ -83,15 +81,12 @@ export default function App() {
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
-        onOpenResume={() => setResumeOpen(true)}
       />
 
       {/* Main Page Sections */}
       <main className="w-full max-w-full overflow-x-hidden">
         {/* Profile (Hero replacement) */}
-        <ProfileHero
-          onOpenResume={() => setResumeOpen(true)}
-        />
+        <ProfileHero />
 
         {/* Technical Skills */}
         <SkillsSection />
@@ -109,14 +104,11 @@ export default function App() {
         <CertificationsSection />
 
         {/* Contact Form & Socials */}
-        <ContactSection onOpenResume={() => setResumeOpen(true)} />
+        <ContactSection />
       </main>
 
       {/* Footer */}
       <Footer />
-
-      {/* Interactive Resume Modal */}
-      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
 
       {/* Interactive Project Preview Modal */}
       <ProjectPreviewModal

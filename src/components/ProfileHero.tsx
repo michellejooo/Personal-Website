@@ -1,20 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { PROFILE_DATA, PROFILE_AVATAR } from '../data/portfolioData';
+import {
+  PROFILE_DATA,
+  PROFILE_AVATAR,
+  SKILLS_DATA,
+  PROJECTS_DATA,
+  EXPERIENCE_DATA,
+  CERTIFICATIONS_DATA,
+} from '../data/portfolioData';
 import { MusicSection } from './MusicSection';
 import {
   FolderGit2,
   Award,
-  Globe2,
   GraduationCap,
   ArrowRight,
   Mail,
   CheckCircle2,
+  Wrench,
+  Briefcase,
 } from 'lucide-react';
 
 interface ProfileHeroProps {
   onOpenResume?: () => void;
 }
+
+// Animated running counter component
+const AnimatedCounter: React.FC<{ target: number; duration?: number }> = ({
+  target,
+  duration = 1200,
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    let frameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // Ease out cubic
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeProgress * target));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      } else {
+        setCount(target);
+      }
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [target, duration]);
+
+  return <span>{count}</span>;
+};
 
 export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   const typewriterPhrases = [
@@ -169,35 +209,65 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto"
+          className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 max-w-5xl mx-auto"
         >
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-md flex items-center gap-4 hover:border-[#7A0000]/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
-              <FolderGit2 className="w-6 h-6" />
+          {/* Skills & Tools Count */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 hover:border-[#7A0000]/40 transition-colors">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
+              <Wrench className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <p className="text-2xl font-extrabold text-gray-900 dark:text-white">4</p>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-300">Featured Projects</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white tabular-nums">
+                <AnimatedCounter target={SKILLS_DATA.length} />
+              </p>
+              <p className="text-[11px] sm:text-xs font-semibold text-gray-600 dark:text-slate-300">
+                Skills & Tech
+              </p>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-md flex items-center gap-4 hover:border-[#7A0000]/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
-              <Award className="w-6 h-6" />
+          {/* Featured Projects Count */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 hover:border-[#7A0000]/40 transition-colors">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
+              <FolderGit2 className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <p className="text-2xl font-extrabold text-gray-900 dark:text-white">1</p>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-300">Certifications</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white tabular-nums">
+                <AnimatedCounter target={PROJECTS_DATA.length} />
+              </p>
+              <p className="text-[11px] sm:text-xs font-semibold text-gray-600 dark:text-slate-300">
+                Featured Projects
+              </p>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-md flex items-center gap-4 hover:border-[#7A0000]/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
-              <Globe2 className="w-6 h-6" />
+          {/* Work & Leadership Experience Count */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 hover:border-[#7A0000]/40 transition-colors">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
+              <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <p className="text-2xl font-extrabold text-gray-900 dark:text-white">2</p>
-              <p className="text-xs font-semibold text-gray-600 dark:text-slate-300">Languages (Fluent)</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white tabular-nums">
+                <AnimatedCounter target={EXPERIENCE_DATA.length} />
+              </p>
+              <p className="text-[11px] sm:text-xs font-semibold text-gray-600 dark:text-slate-300">
+                Experiences
+              </p>
+            </div>
+          </div>
+
+          {/* Certifications Count */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 hover:border-[#7A0000]/40 transition-colors">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white tabular-nums">
+                <AnimatedCounter target={CERTIFICATIONS_DATA.length} />
+              </p>
+              <p className="text-[11px] sm:text-xs font-semibold text-gray-600 dark:text-slate-300">
+                Certifications
+              </p>
             </div>
           </div>
         </motion.div>

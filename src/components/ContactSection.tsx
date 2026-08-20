@@ -15,10 +15,10 @@ import {
 } from 'lucide-react';
 
 interface ContactSectionProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResume }) => {
+export const ContactSection: React.FC<ContactSectionProps> = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -146,16 +146,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenResume }) 
               </div>
             </div>
 
-            {/* Resume Download Action Button */}
+            {/* Resume Download Action Button (Direct Google Drive Link) */}
             <div className="mt-8 pt-6 border-t border-gray-200 dark:border-slate-800">
-              <button
-                onClick={onOpenResume}
+              <a
+                href={PROFILE_DATA.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#7A0000] to-red-800 text-white font-bold text-xs shadow-lg shadow-[#7A0000]/25 hover:from-[#990000] hover:to-red-900 transition-all flex items-center justify-center gap-2"
                 id="contact-btn-download-resume"
               >
                 <Download className="w-4 h-4" />
-                <span>Download Resume / CV (PDF)</span>
-              </button>
+                <span>Download Resume / CV via Google Drive</span>
+              </a>
             </div>
           </motion.div>
 

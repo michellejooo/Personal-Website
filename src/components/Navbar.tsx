@@ -4,7 +4,6 @@ import { Sun, Moon, FileText, Menu, X, Code2 } from 'lucide-react';
 interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
-  onOpenResume?: () => void;
 }
 
 export const NAV_ITEMS = [
@@ -19,7 +18,6 @@ export const NAV_ITEMS = [
 export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   setDarkMode,
-  onOpenResume,
 }) => {
   const [activeSection, setActiveSection] = useState('profile');
   const [scrolled, setScrolled] = useState(false);
@@ -116,12 +114,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-[#7A0000]" />}
           </button>
 
-          {/* Mobile Menu Toggle (Garis 3) */}
+          {/* Menu Toggle (Garis 3) - Visible across all screens (mobile & desktop) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex lg:hidden p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700 items-center justify-center min-w-[42px] min-h-[42px] shrink-0 active:scale-95"
+            className="flex p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700 items-center justify-center min-w-[42px] min-h-[42px] shrink-0 active:scale-95 shadow-xs"
             aria-label="Toggle navigation menu"
-            id="nav-mobile-menu-toggle"
+            id="nav-menu-toggle"
           >
             {mobileMenuOpen ? (
               <X className="w-5 h-5 stroke-[2.5] text-gray-900 dark:text-white" />
@@ -132,51 +130,53 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Navigation Menu Overlay (Available for both mobile and desktop toggling) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 py-5 flex flex-col gap-2">
-          <div className="grid grid-cols-2 gap-1.5 pb-3 border-b border-gray-100 dark:border-slate-800">
-            {NAV_ITEMS.map((item) => {
-              const sectionId = item.href.substring(1);
-              const isActive = activeSection === sectionId;
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
-                    isActive
-                      ? 'bg-[#7A0000] text-white'
-                      : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800'
-                  }`}
-                  id={`mobile-nav-link-${sectionId}`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </div>
+        <div className="absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-3 border-b border-gray-100 dark:border-slate-800">
+              {NAV_ITEMS.map((item) => {
+                const sectionId = item.href.substring(1);
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`px-3 py-2.5 rounded-xl text-xs font-bold text-center transition-all ${
+                      isActive
+                        ? 'bg-[#7A0000] text-white shadow-sm'
+                        : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800'
+                    }`}
+                    id={`menu-overlay-nav-link-${sectionId}`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
 
-          {/* Dark Mode Switch Row in Mobile */}
-          <div className="pt-2 flex items-center justify-between">
-            <span className="text-xs font-semibold text-gray-600 dark:text-slate-300">Appearance Mode</span>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-700 text-xs font-semibold"
-              id="mobile-nav-theme-toggle"
-            >
-              {darkMode ? (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Light Mode</span>
-                </>
-              ) : (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-[#7A0000]" />
-                  <span>Dark Mode</span>
-                </>
-              )}
-            </button>
+            {/* Quick Theme Switch Row */}
+            <div className="pt-3 flex items-center justify-between">
+              <span className="text-xs font-semibold text-gray-600 dark:text-slate-300">Appearance Mode</span>
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-700 text-xs font-semibold"
+                id="menu-overlay-theme-toggle"
+              >
+                {darkMode ? (
+                  <>
+                    <Sun className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-3.5 h-3.5 text-[#7A0000]" />
+                    <span>Dark Mode</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       )}

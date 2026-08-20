@@ -12,14 +12,14 @@ export const PROFILE_DATA = {
   title: 'Information Technology Student',
   avatar: profileAvatarImg,
   subTitle: 'Joanna | Web Dev Enthusiast',
-  roles: ['Web Dev Enthusiast', 'AI Engineer', 'System Analyst',],
+  roles: ['Web Dev Enthusiast', 'AI Engineer', 'Data Analyst',],
   introduction:
-    'Information Technology Student @ Telkom University, specializing in Web Development, Data Analysis, AI, and System Analysis. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin',
+    'Information Technology Student @ Telkom University, specializing in Web Development, Data Analysis, and AI. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin.',
   technologyTags: [
     'Web Development',
     'AI Engineer',
     'Fluent in English & Mandarin',
-    'System Analysis',
+    'Data Analyst',
   ],
   gpa: '3.16 / 4.00',
   stats: [
@@ -36,16 +36,21 @@ export const PROFILE_DATA = {
     github: 'https://github.com/michellejooo',
     instagram: 'https://instagram.com/joannamt_',
   },
+  cvUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
   spotifyEmbedUrl:
     'https://open.spotify.com/embed/playlist/30WSpzKASlT69XakEIBCo9?utm_source=generator&si=db09c08e926543dc',
   closingQuote: 'Building technology with purpose, learning without limits.',
 };
 
 export const SKILLS_DATA: Skill[] = [
-  { name: 'UX Researcher', category: 'Technical & Data', level: 85, iconName: 'Search', description: 'User research, interviewing, usability testing, persona mapping, and user experience analysis' },
-  { name: 'Python (Basic Programming)', category: 'Technical & Data', level: 82, iconName: 'Terminal', description: 'Fundamental Python logic, syntax, data manipulation scripts, and basic programming concepts' },
-  { name: 'Data Analyst', category: 'Technical & Data', level: 82, iconName: 'BarChart2', description: 'Data cleaning, exploratory data analysis, trend identification, and visualization' },
-  { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookup functions (VLOOKUP/XLOOKUP), pivot tables, and spreadsheet analysis' },
+  { name: 'Data Analyst', category: 'Technical & Data', level: 85, iconName: 'BarChart2', description: 'Data cleaning, exploratory data analysis, trend identification, and business insights' },
+  { name: 'Python', category: 'Technical & Data', level: 85, iconName: 'Terminal', description: 'Python logic, automation scripts, data wrangling, and structured problem solving' },
+  { name: 'Pandas', category: 'Technical & Data', level: 85, iconName: 'Table', description: 'Dataframe manipulation, data transformation, aggregation, and tabular data analysis' },
+  { name: 'Matplotlib', category: 'Technical & Data', level: 82, iconName: 'PieChart', description: 'Data visualization, chart generation, statistical plotting, and trend plotting' },
+  { name: 'NumPy', category: 'Technical & Data', level: 82, iconName: 'Binary', description: 'Numerical computing, multi-dimensional array operations, and mathematical calculations' },
+  { name: 'ERD Diagram', category: 'Technical & Data', level: 85, iconName: 'Database', description: 'Relational database schema modeling, entity-relationship design, and data normalization' },
+  { name: 'UX Researcher', category: 'Technical & Data', level: 85, iconName: 'Search', description: 'User research, interviewing, usability testing, persona mapping, and experience analysis' },
+  { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookup functions (VLOOKUP/XLOOKUP), pivot tables, and spreadsheet modeling' },
   { name: 'Microsoft Word', category: 'Technical & Data', level: 90, iconName: 'FileText', description: 'Formal report formatting, documentation structuring, and academic document creation' },
 
   { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native fluency in formal, academic, and conversational communication' },
@@ -53,8 +58,8 @@ export const SKILLS_DATA: Skill[] = [
   { name: 'Mandarin (Fluent)', category: 'Languages & Fluency', level: 85, iconName: 'Globe', description: 'Fluent in business communication, technical discourse, and everyday conversation' },
 
   { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Effective verbal, written, and cross-functional interpersonal communication' },
-  { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Delivering engaging speeches, academic seminars, and group presentations with confidence' },
-  { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Guiding team initiatives, organizing organizational committees, and managing project milestones' },
+  { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Delivering engaging speeches, academic seminars, and presentations with confidence' },
+  { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Guiding team initiatives, organizing student committees, and managing project milestones' },
   { name: 'Team Work', category: 'Communication & Leadership', level: 90, iconName: 'UserCheck', description: 'Collaborating smoothly in team environments, active listening, and collective goal execution' },
 
   { name: 'Problem Solving', category: 'Professional & Creative', level: 88, iconName: 'Brain', description: 'Analytical thinking, troubleshooting complex issues, and designing structured solutions' },
@@ -213,9 +218,9 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 'exp-5',
-    role: 'Mentor',
+    role: 'Education Mentor',
     organization: 'BMMK Telkom University · Paruh Waktu',
-    period: 'Okt 2025 - Des 2025',
+    period: 'Okt 2025 - Mei 2026',
     description:
       'As a mentor, I participated in a large-scale mentoring program, which required all mentors and mentees from BMMK Telkom University to participate under the auspices of the BPA (Badan Penanggulangan Akademik). Here, I guided, led, and connected mentees.',
     responsibilities: [
