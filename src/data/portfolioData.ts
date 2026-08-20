@@ -25,7 +25,7 @@ export const PROFILE_DATA = {
     email: 'joannatambunan496@gmail.com',
     location: 'Bandung, Indonesia',
     linkedin: 'https://www.linkedin.com/in/joannamt',
-    github: 'https://github.com/joanna-dev',
+    github: 'https://github.com/michellejooo',
     instagram: 'https://instagram.com/joannamt_',
   },
   spotifyEmbedUrl:
