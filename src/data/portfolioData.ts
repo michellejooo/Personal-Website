@@ -11,7 +11,7 @@ export const PROFILE_DATA = {
   name: 'Joanna',
   title: 'Information Technology Student',
   avatar: profileAvatarImg,
-  subTitle: 'Joanna | Web Dev Enthusiast',
+  subTitle: 'Joanna | AI & Data Analyst Enthusiast',
   roles: ['Web Dev Enthusiast', 'AI Engineer', 'Data Analyst',],
   introduction:
     'Information Technology Student @ Telkom University, specializing in Web Development, Data Analysis, and AI. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin.',
