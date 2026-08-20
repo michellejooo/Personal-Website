@@ -114,13 +114,13 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left"
+            className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left justify-center"
           >
-            <div className="relative group">
+            <div className="relative group mx-auto lg:mx-0">
               {/* Decorative Red Accent Frame */}
-              <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#7A0000] via-red-600 to-amber-500 rounded-3xl blur-sm opacity-70 group-hover:opacity-100 transition duration-300" />
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#7A0000] via-red-600 to-amber-500 rounded-[2rem] blur-md opacity-70 group-hover:opacity-100 transition duration-300" />
 
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
+              <div className="relative w-56 h-64 sm:w-64 sm:h-76 md:w-72 md:h-84 lg:w-80 lg:h-[380px] xl:w-96 xl:h-[440px] rounded-[1.75rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
                 <img
                   src={PROFILE_AVATAR}
                   alt="Joanna - Information Technology Student"
