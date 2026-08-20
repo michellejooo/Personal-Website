@@ -70,7 +70,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] text-[#1F2937] dark:text-[#F8FAFC] transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFC] dark:bg-[#0F172A] text-[#1F2937] dark:text-[#F8FAFC] transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white">
       {/* Top Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-slate-800 z-50 pointer-events-none">
         <div
@@ -87,7 +87,7 @@ export default function App() {
       />
 
       {/* Main Page Sections */}
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         {/* Profile (Hero replacement) */}
         <ProfileHero
           onOpenResume={() => setResumeOpen(true)}

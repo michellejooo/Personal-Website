@@ -116,14 +116,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-[#7A0000]" />}
           </button>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle (Garis 3) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700"
-            aria-label="Toggle mobile menu"
+            className="flex lg:hidden p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700 items-center justify-center min-w-[42px] min-h-[42px] shrink-0 active:scale-95"
+            aria-label="Toggle navigation menu"
             id="nav-mobile-menu-toggle"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5 stroke-[2.5] text-gray-900 dark:text-white" />
+            ) : (
+              <Menu className="w-5 h-5 stroke-[2.5] text-gray-900 dark:text-white" />
+            )}
           </button>
         </div>
       </div>
