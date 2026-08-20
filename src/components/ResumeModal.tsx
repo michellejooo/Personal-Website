@@ -30,7 +30,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="w-3 h-3 rounded-full bg-amber-500" />
             <div className="w-3 h-3 rounded-full bg-emerald-500" />
             <span className="ml-2 text-xs font-bold text-gray-700 dark:text-slate-200">
-              Curriculum Vitae — Joanna.pdf
+              CV Joanna Michelle Tambunan.pdf
             </span>
           </div>
 
@@ -66,7 +66,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 {PROFILE_DATA.title}
               </p>
               <p className="text-xs text-gray-500 dark:text-slate-400 mt-1">
-                Web Development • AI Engineer • System Analysis
+                Web Development • AI Engineer • Data Analyst
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </p>
               <p className="flex items-center gap-1.5">
                 <Globe className="w-3.5 h-3.5 text-[#7A0000]" />
-                <span>github.com/joanna-dev</span>
+                <span>https://github.com/michellejooo</span>
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             className="px-5 py-2 rounded-xl bg-[#7A0000] text-white text-xs font-semibold hover:bg-[#990000] flex items-center gap-1.5 shadow-md"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download PDF</span>
+            <span>Download CV</span>
           </button>
         </div>
       </motion.div>

@@ -67,7 +67,7 @@ export const PROJECTS_DATA: Project[] = [
     category: 'Web Development',
     image: '/src/assets/images/project_portfolio_1785572143262.jpg',
     status: 'Live / Active',
-    githubUrl: 'https://github.com/joanna-dev/joanna-portfolio',
+    githubUrl: 'https://github.com/michellejooo/Personal-Website',
     liveUrl: '#',
     features: [
       'Sticky glassmorphism navbar with smooth section scroll',
@@ -154,8 +154,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 'exp-1',
-    role: 'Academic Staff',
-    organization: 'Information Technology Student Association',
+    role: 'Staff Ahli Divisi Akademik',
+    organization: 'Himpunan Mahasiswa Teknologi Informasi',
     period: 'March 2026 - Present',
     responsibilities: [
       'Organized academic programs and peer tutoring workshops for IT students',
@@ -180,7 +180,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-3',
     role: 'Keyboard Player',
     organization: 'Christian Fellowship (PMK Telkom University)',
-    period: '2026',
+    period: 'May 2026 - Present',
     responsibilities: [
       'Worship keyboard player for weekly services and campus fellowship events',
       'Collaborated with music team members on song arrangements and sound checks',
@@ -192,7 +192,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-4',
     role: 'Member of Club Search : Essay Division',
     organization: 'SEARCH TELKOM UNIVERSITY · Part-time',
-    period: 'Dec 2025 - Present · 9 mos',
+    period: 'Dec 2025 - Present',
     description:
       'A platform for students who want to express critical and solution-oriented ideas through writing. The main focus is on training research skills and constructing strong, systematic arguments',
     responsibilities: [
@@ -207,7 +207,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-5',
     role: 'Mentor',
     organization: 'BMMK Telkom University · Paruh Waktu',
-    period: 'Okt 2025 - Des 2025 · 3 bln',
+    period: 'Okt 2025 - Des 2025',
     description:
       'As a mentor, I participated in a large-scale mentoring program, which required all mentors and mentees from BMMK Telkom University to participate under the auspices of the BPA (Badan Penanggulangan Akademik). Here, I guided, led, and connected mentees.',
     responsibilities: [
