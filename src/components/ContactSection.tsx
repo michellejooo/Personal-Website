@@ -156,7 +156,7 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
                 id="contact-btn-download-resume"
               >
                 <Download className="w-4 h-4" />
-                <span>Download Resume / CV via Google Drive</span>
+                <span>Download CV</span>
               </a>
             </div>
           </motion.div>

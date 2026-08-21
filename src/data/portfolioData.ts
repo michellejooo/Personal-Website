@@ -1,6 +1,6 @@
 import { Skill, Project, ExperienceItem, Certification, LanguageItem } from '../types';
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
-import projectPortfolioImg from '../assets/images/portfolio_screenshot_1787274579243.jpg';
+import projectPortfolioImg from '../assets/images/website_profile.png';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
 import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
 import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
