@@ -156,15 +156,17 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                         <span>Live Demo</span>
                       </button>
 
-                      <button
-                        onClick={() => onOpenCodePreview(project)}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="py-2 px-3 rounded-xl bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600 text-xs font-semibold flex items-center justify-center gap-1.5 border border-gray-200 dark:border-slate-600 transition-colors"
-                        title="View GitHub Code Details"
+                        title="View GitHub Repository"
                         id={`btn-github-${project.id}`}
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span className="hidden sm:inline">GitHub</span>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

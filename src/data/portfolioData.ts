@@ -1,6 +1,6 @@
 import { Skill, Project, ExperienceItem, Certification, LanguageItem } from '../types';
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
-import projectPortfolioImg from '../assets/images/project_portfolio_1785572143262.jpg';
+import projectPortfolioImg from '../assets/images/portfolio_screenshot_1787274579243.jpg';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
 import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
 import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
@@ -12,9 +12,9 @@ export const PROFILE_DATA = {
   title: 'Information Technology Student',
   avatar: profileAvatarImg,
   subTitle: 'Joanna | AI & Data Analyst Enthusiast',
-  roles: ['Web Dev Enthusiast', 'AI Engineer', 'Data Analyst',],
+  roles: ['Web Development Enthusiast', 'Fluent in English & Mandarin',],
   introduction:
-    'Information Technology Student @ Telkom University, specializing in Web Development, Data Analysis, and AI. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin.',
+    'IT Student @ Telkom University, specializing in Web Development, Data Analysis, and AI. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin.',
   technologyTags: [
     'Web Development',
     'AI Engineer',
@@ -28,7 +28,7 @@ export const PROFILE_DATA = {
     { label: 'Languages (Fluent)', value: '2', sub: 'English & Mandarin Fluent' },
   ],
   aboutText:
-    'I am an Information Technology student at Telkom University actively developing my skills in Web Development, Data Analytics, System Analysis, and AI. As a Web Dev & Data Analyst Enthusiast, I am enthusiastic about writing clean code, analyzing datasets, and designing intuitive user experiences while continuously learning modern industry tools.',
+    'IT Student at Telkom University actively developing skills in Web Development, Data Analytics, System Analyst, and AI. As a Web Dev & Data Analyst Enthusiast, I am enthusiastic about writing clean code, analyzing datasets, and designing intuitive user experiences while continuously learning modern industry tools.',
   contact: {
     email: 'joannatambunan496@gmail.com',
     location: 'Bandung, Indonesia',

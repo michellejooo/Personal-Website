@@ -58,10 +58,9 @@ const AnimatedCounter: React.FC<{ target: number; duration?: number }> = ({
 
 export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   const typewriterPhrases = [
-    'Web Dev Enthusiast',
-    'AI Engineer',
+    'Web Development Enthusiast',
+    'AI & Data Analyst Enthusiast',
     'Fluent in English & Mandarin',
-    'System Analyst',
   ];
 
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -141,10 +140,10 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
           >
 
             {/* Primary Red Typewriter Title */}
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#7A0000] dark:text-red-400 flex items-center flex-wrap leading-tight min-h-[44px]" id="profile-name-title">
-              <span className="tracking-tight mr-2 sm:mr-3">Joanna |</span>
+            <h1 className="text-xl sm:text-2xl lg:text-[28px] xl:text-3xl font-extrabold text-[#7A0000] dark:text-red-400 flex items-center flex-wrap leading-tight min-h-[40px]" id="profile-name-title">
+              <span className="tracking-tight mr-2 sm:mr-2.5">Joanna |</span>
               <span className="tracking-tight">{currentText}</span>
-              <span className="inline-block w-1 h-6 sm:h-8 bg-[#7A0000] dark:bg-red-400 ml-1.5 animate-pulse rounded-full" />
+              <span className="inline-block w-0.5 sm:w-1 h-5 sm:h-6 bg-[#7A0000] dark:bg-red-400 ml-1.5 animate-pulse rounded-full" />
             </h1>
 
             <div className="mt-3 text-xs sm:text-sm font-semibold text-gray-500 dark:text-slate-400 flex items-center gap-2">
