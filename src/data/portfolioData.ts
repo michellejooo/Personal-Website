@@ -4,6 +4,7 @@ import projectPortfolioImg from '../assets/images/website_profile.png';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
 import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
 import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
+import courseraCertImg from '../assets/images/sertifikatdata.png';
 
 export const PROFILE_AVATAR = profileAvatarImg;
 
@@ -12,23 +13,22 @@ export const PROFILE_DATA = {
   title: 'Information Technology Student',
   avatar: profileAvatarImg,
   subTitle: 'Joanna | AI & Data Analyst Enthusiast',
-  roles: ['Web Development Enthusiast', 'Fluent in English & Mandarin',],
+  roles: ['Web Development Enthusiast', 'Prompt Engineer',],
   introduction:
-    'IT Student @ Telkom University, specializing in Web Development, Data Analysis, and AI. Highly motivated to learn new things, develop new skills, and take on new challenges. Strong in leadership, communication, teamwork, and problem-solving, with the ability to adapt to different environments and contribute effectively both independently and as part of a team. Fluently in English and Mandarin.',
+    'IT Student at Telkom University specializing in Web Dev, Data Analysis, and AI. Strong leader and problem-solver, ready to adapt and contribute effectively in team or solo roles.',
   technologyTags: [
     'Web Development',
     'AI Engineer',
-    'Fluent in English & Mandarin',
     'Data Analyst',
   ],
   gpa: '3.16 / 4.00',
   stats: [
     { label: 'Featured Projects', value: '4', sub: 'Web, Data & Full-stack' },
     { label: 'Certifications', value: '1', sub: 'Google Data Analysis with Python' },
-    { label: 'Languages (Fluent)', value: '2', sub: 'English & Mandarin Fluent' },
+    { label: 'Languages (Fluent)', value: '1', sub: 'English' },
   ],
   aboutText:
-    'IT Student at Telkom University actively developing skills in Web Development, Data Analytics, System Analyst, and AI. As a Web Dev & Data Analyst Enthusiast, I am enthusiastic about writing clean code, analyzing datasets, and designing intuitive user experiences while continuously learning modern industry tools.',
+    'IT Student at Telkom University specializing in Web Dev, Data Analysis, and AI. Strong leader and problem-solver, ready to adapt and contribute effectively in team or solo roles.',
   contact: {
     email: 'joannatambunan496@gmail.com',
     location: 'Bandung, Indonesia',
@@ -55,7 +55,6 @@ export const SKILLS_DATA: Skill[] = [
 
   { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native fluency in formal, academic, and conversational communication' },
   { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Fluent in professional, academic, and technical written & spoken English' },
-  { name: 'Mandarin (Fluent)', category: 'Languages & Fluency', level: 85, iconName: 'Globe', description: 'Fluent in business communication, technical discourse, and everyday conversation' },
 
   { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Effective verbal, written, and cross-functional interpersonal communication' },
   { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Delivering engaging speeches, academic seminars, and presentations with confidence' },
@@ -204,7 +203,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'exp-4',
     role: 'Member of Club Search : Essay Division',
-    organization: 'SEARCH TELKOM UNIVERSITY · Part-time',
+    organization: 'SEARCH TELKOM UNIVERSITY',
     period: 'Dec 2025 - Present',
     description:
       'A platform for students who want to express critical and solution-oriented ideas through writing. The main focus is on training research skills and constructing strong, systematic arguments',
@@ -219,7 +218,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'exp-5',
     role: 'Education Mentor',
-    organization: 'BMMK Telkom University · Paruh Waktu',
+    organization: 'BMMK Telkom University',
     period: 'Okt 2025 - Mei 2026',
     description:
       'As a mentor, I participated in a large-scale mentoring program, which required all mentors and mentees from BMMK Telkom University to participate under the auspices of the BPA (Badan Penanggulangan Akademik). Here, I guided, led, and connected mentees.',
@@ -235,12 +234,22 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 export const CERTIFICATIONS_DATA: Certification[] = [
   {
     id: 'cert-2',
-    title: 'Google Data Analysis with\nPython',
+    title: 'Google Data Analysis with Python',
     issuer: 'Coursera (Google)',
-    date: '2024',
+    date: 'July 2026',
+    recipient: 'Joanna Michelle Tambunan',
+    image: courseraCertImg,
     topics: ['Python', 'SQL', 'Data Cleaning', 'Data Visualization', 'Exploratory Data Analysis', 'Dashboard Development'],
-    credentialId: '3e0802804ae8efbdd65fdfdf44988e9b',
-    credentialUrl: 'https://coursera.org/share/3e0802804ae8efbdd65fdfdf44988e9b',
+    courses: [
+      'Hello, Python!',
+      'Functions and Conditional Statements',
+      'Loops and Strings',
+      'Data Structures in Python',
+      'Explore Raw Data',
+      'Clean Your Data',
+    ],
+    credentialId: '3TK9EE4VYH61',
+    credentialUrl: 'https://coursera.org/verify/specialization/3TK9EE4VYH61',
   },
 ];
 
@@ -259,12 +268,6 @@ export const LANGUAGES_DATA: LanguageItem[] = [
     details: 'Fluent in professional, academic, and technical written & spoken English',
     flagCode: '🇺🇸',
   },
-  {
-    name: 'Mandarin',
-    proficiency: 'Fluent',
-    percentage: 85,
-    details: 'Fluent in business communication, technical discourse, and everyday conversation',
-    flagCode: '🇨🇳',
-  },
+
 ];
 

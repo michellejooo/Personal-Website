@@ -38,6 +38,9 @@ export interface Certification {
   topics: string[];
   credentialId?: string;
   credentialUrl?: string;
+  image?: string;
+  courses?: string[];
+  recipient?: string;
 }
 
 export interface LanguageItem {

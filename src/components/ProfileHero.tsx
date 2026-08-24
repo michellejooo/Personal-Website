@@ -60,7 +60,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   const typewriterPhrases = [
     'Web Development Enthusiast',
     'AI & Data Analyst Enthusiast',
-    'Fluent in English & Mandarin',
+    'Prompt Engineer',
   ];
 
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -101,7 +101,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   };
 
   return (
-    <section id="profile" className="pt-28 pb-16 lg:pt-36 lg:pb-24 relative overflow-hidden">
+    <section id="profile" className="pt-24 sm:pt-28 lg:pt-36 pb-16 lg:pb-24 relative overflow-hidden">
       {/* Background Deep Red Ambient Glow Effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#7A0000]/10 dark:bg-[#7A0000]/15 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-10 right-10 w-72 h-72 bg-red-500/5 rounded-full blur-2xl pointer-events-none -z-10" />
@@ -140,10 +140,10 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
           >
 
             {/* Primary Red Typewriter Title */}
-            <h1 className="text-xl sm:text-2xl lg:text-[28px] xl:text-3xl font-extrabold text-[#7A0000] dark:text-red-400 flex items-center flex-wrap leading-tight min-h-[40px]" id="profile-name-title">
-              <span className="tracking-tight mr-2 sm:mr-2.5">Joanna |</span>
+            <h1 className="text-base xs:text-lg sm:text-2xl lg:text-[28px] xl:text-3xl font-extrabold text-[#7A0000] dark:text-red-400 flex items-center flex-wrap leading-snug sm:leading-tight min-h-[32px] sm:min-h-[40px]" id="profile-name-title">
+              <span className="tracking-tight mr-1.5 sm:mr-2.5">Joanna |</span>
               <span className="tracking-tight">{currentText}</span>
-              <span className="inline-block w-0.5 sm:w-1 h-5 sm:h-6 bg-[#7A0000] dark:bg-red-400 ml-1.5 animate-pulse rounded-full" />
+              <span className="inline-block w-0.5 sm:w-1 h-4 sm:h-6 bg-[#7A0000] dark:bg-red-400 ml-1 sm:ml-1.5 animate-pulse rounded-full" />
             </h1>
 
             <div className="mt-3 text-xs sm:text-sm font-semibold text-gray-500 dark:text-slate-400 flex items-center gap-2">

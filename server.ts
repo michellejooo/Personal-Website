@@ -32,7 +32,7 @@ async function startServer() {
       - System Analysis: UML, Use Case Diagram, Activity Diagram, BPMN, ERD, Requirement Analysis
       - AI: Prompt Engineering, OpenAI API, AI Workflow, ML Fundamentals, NLP Basic
       - Database & Tools: MySQL, PostgreSQL, MongoDB, Git, GitHub, VS Code, Figma, Postman
-      - Languages: Indonesian (Native), English (Fluent), Mandarin (Fluent)
+      - Languages: Indonesian (Native), English (Fluent)
       - Featured Projects: Personal Portfolio Website, Travelyuk (Travel Booking), Echo (Music Streaming)
       
       Respond professionally, warmly, and concisely (2-4 sentences) on behalf of Joanna to recruiters, hiring managers, or visitors.`;
