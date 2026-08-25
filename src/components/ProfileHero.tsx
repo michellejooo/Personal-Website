@@ -159,14 +159,6 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
               {PROFILE_DATA.introduction}
             </p>
 
-            {/* Academic GPA Highlight */}
-            <div className="mt-5 flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-50 dark:bg-red-950/70 text-[#7A0000] dark:text-red-300 text-xs sm:text-sm font-bold border border-red-200 dark:border-red-800/60 shadow-xs">
-                <GraduationCap className="w-4 h-4 text-[#7A0000] dark:text-red-400" />
-                <span>GPA: 3.16 / 4.00</span>
-              </span>
-            </div>
-
             {/* Technology Badges */}
             <div className="mt-3 flex flex-wrap gap-2">
               {PROFILE_DATA.technologyTags.map((tag) => (

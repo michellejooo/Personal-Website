@@ -21,7 +21,6 @@ export const PROFILE_DATA = {
     'AI Engineer',
     'Data Analyst',
   ],
-  gpa: '3.16 / 4.00',
   stats: [
     { label: 'Featured Projects', value: '4', sub: 'Web, Data & Full-stack' },
     { label: 'Certifications', value: '1', sub: 'Google Data Analysis with Python' },
