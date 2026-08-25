@@ -13,7 +13,7 @@ A modern, responsive, and interactive personal portfolio website showcasing proj
 
 - 🎨 **Deep Red Aesthetic & Dark/Light Mode**: Smooth transitions between dark and light themes with custom contrast balancing.
 - 👩‍💻 **Interactive Hero & Typing Animation**: Dynamic role transitions highlighting Web Development, AI Engineering, and Data Analysis.
-- 📊 **Academic & Skills Matrix**: Highlighting GPA (3.16/4.00), certifications (Google Data Analysis with Python), technical skills, languages (Native Indonesian, Fluent English & Mandarin), and soft skills.
+- 📊 **Academic & Skills Matrix**: Certifications (Google Data Analysis with Python), technical skills, languages (Native Indonesian, Fluent English & Mandarin), and soft skills.
 - 💼 **Project Showcase & Filter**: Filter projects across Web Development, Data Analytics, Full-stack, and Mobile categories with modal details and live/repository links.
 - 🏛️ **Experience & Leadership Timeline**: Structured chronology of academic staff roles, lab internships, and organizational activities.
 - 🎵 **Spotify Playlist Widget**: Embedded music player reflecting study and workflow ambience.
