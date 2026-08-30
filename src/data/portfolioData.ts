@@ -1,4 +1,4 @@
-import { Skill, Project, ExperienceItem, Certification, LanguageItem } from '../types';
+import { Skill, Project, ExperienceItem, Certification, LanguageItem, EducationItem } from '../types';
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
 import projectPortfolioImg from '../assets/images/website_profile.png';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
@@ -7,6 +7,23 @@ import projectDataAnalysisImg from '../assets/images/project_data_analysis_17856
 import courseraCertImg from '../assets/images/sertifikatdata.png';
 
 export const PROFILE_AVATAR = profileAvatarImg;
+
+export const EDUCATION_DATA: EducationItem[] = [
+  {
+    institution: 'Telkom University',
+    major: 'Information Technology Major',
+    period: '2024 - Present',
+    location: 'Bandung, Jawa Barat',
+    status: 'In Progress',
+  },
+  {
+    institution: 'SMA Santa Maria Pekanbaru',
+    major: 'Science Major',
+    period: '2021 - 2024',
+    location: 'Pekanbaru, Riau',
+    status: 'Graduated',
+  },
+];
 
 export const PROFILE_DATA = {
   name: 'Joanna',
@@ -42,28 +59,29 @@ export const PROFILE_DATA = {
 };
 
 export const SKILLS_DATA: Skill[] = [
-  { name: 'Data Analyst', category: 'Technical & Data', level: 85, iconName: 'BarChart2', description: 'Data cleaning, exploratory data analysis, trend identification, and business insights' },
-  { name: 'Python', category: 'Technical & Data', level: 85, iconName: 'Terminal', description: 'Python logic, automation scripts, data wrangling, and structured problem solving' },
-  { name: 'Pandas', category: 'Technical & Data', level: 85, iconName: 'Table', description: 'Dataframe manipulation, data transformation, aggregation, and tabular data analysis' },
-  { name: 'Matplotlib', category: 'Technical & Data', level: 82, iconName: 'PieChart', description: 'Data visualization, chart generation, statistical plotting, and trend plotting' },
-  { name: 'NumPy', category: 'Technical & Data', level: 82, iconName: 'Binary', description: 'Numerical computing, multi-dimensional array operations, and mathematical calculations' },
-  { name: 'ERD Diagram', category: 'Technical & Data', level: 85, iconName: 'Database', description: 'Relational database schema modeling, entity-relationship design, and data normalization' },
-  { name: 'UX Researcher', category: 'Technical & Data', level: 85, iconName: 'Search', description: 'User research, interviewing, usability testing, persona mapping, and experience analysis' },
-  { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookup functions (VLOOKUP/XLOOKUP), pivot tables, and spreadsheet modeling' },
-  { name: 'Microsoft Word', category: 'Technical & Data', level: 90, iconName: 'FileText', description: 'Formal report formatting, documentation structuring, and academic document creation' },
+  { name: 'Data Analyst', category: 'Technical & Data', level: 85, iconName: 'BarChart2', description: 'Data cleaning & exploratory analysis' },
+  { name: 'Prompt Engineer', category: 'Technical & Data', level: 88, iconName: 'Bot', description: 'AI prompt design & optimization' },
+  { name: 'Python', category: 'Technical & Data', level: 85, iconName: 'Terminal', description: 'Logic, scripts & automation' },
+  { name: 'Pandas', category: 'Technical & Data', level: 85, iconName: 'Table', description: 'Dataframe manipulation & aggregation' },
+  { name: 'Matplotlib', category: 'Technical & Data', level: 82, iconName: 'PieChart', description: 'Data visualization & plotting' },
+  { name: 'NumPy', category: 'Technical & Data', level: 82, iconName: 'Binary', description: 'Numerical computing & arrays' },
+  { name: 'ERD Diagram', category: 'Technical & Data', level: 85, iconName: 'Database', description: 'Relational database schema design' },
+  { name: 'UX Researcher', category: 'Technical & Data', level: 85, iconName: 'Search', description: 'User research & usability testing' },
+  { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookups & pivot tables' },
+  { name: 'Microsoft Word', category: 'Technical & Data', level: 90, iconName: 'FileText', description: 'Reports & documentation' },
 
-  { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native fluency in formal, academic, and conversational communication' },
-  { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Fluent in professional, academic, and technical written & spoken English' },
+  { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native written & verbal fluency' },
+  { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Professional & academic fluency' },
 
-  { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Effective verbal, written, and cross-functional interpersonal communication' },
-  { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Delivering engaging speeches, academic seminars, and presentations with confidence' },
-  { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Guiding team initiatives, organizing student committees, and managing project milestones' },
-  { name: 'Team Work', category: 'Communication & Leadership', level: 90, iconName: 'UserCheck', description: 'Collaborating smoothly in team environments, active listening, and collective goal execution' },
+  { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Verbal & written communication' },
+  { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Presentations & academic speaking' },
+  { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Team guidance & project coordination' },
+  { name: 'Team Work', category: 'Communication & Leadership', level: 90, iconName: 'UserCheck', description: 'Active collaboration & team execution' },
 
-  { name: 'Problem Solving', category: 'Professional & Creative', level: 88, iconName: 'Brain', description: 'Analytical thinking, troubleshooting complex issues, and designing structured solutions' },
-  { name: 'Proposal Writing', category: 'Professional & Creative', level: 85, iconName: 'FileCheck', description: 'Drafting formal event proposals, academic sponsorship plans, and project documentations' },
-  { name: 'Design Presentation', category: 'Professional & Creative', level: 85, iconName: 'Palette', description: 'Designing visually engaging slide decks, pitch layouts, and structured presentation materials' },
-  { name: 'Keyboardist', category: 'Professional & Creative', level: 88, iconName: 'Activity', description: 'Live keyboard musical performance, music arrangement, and team harmony' },
+  { name: 'Problem Solving', category: 'Professional & Creative', level: 88, iconName: 'Brain', description: 'Analytical thinking & solutions' },
+  { name: 'Proposal Writing', category: 'Professional & Creative', level: 85, iconName: 'FileCheck', description: 'Formal proposals & planning' },
+  { name: 'Design Presentation', category: 'Professional & Creative', level: 85, iconName: 'Palette', description: 'Engaging pitch decks & slide design' },
+  { name: 'Keyboardist', category: 'Professional & Creative', level: 88, iconName: 'Activity', description: 'Musical performance & keyboard harmony' },
 ];
 
 export const PROJECTS_DATA: Project[] = [

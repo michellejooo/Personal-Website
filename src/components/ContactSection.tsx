@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { PROFILE_DATA } from '../data/portfolioData';
 import { ContactFormData } from '../types';
+import { CvComingSoonModal } from './CvComingSoonModal';
 import {
   Mail,
   Linkedin,
@@ -28,6 +29,7 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,18 +148,17 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
               </div>
             </div>
 
-            {/* Resume Download Action Button (Direct Google Drive Link) */}
+            {/* Resume Download Action Button (Opens Coming Soon Window) */}
             <div className="mt-8 pt-6 border-t border-gray-200 dark:border-slate-800">
-              <a
-                href={PROFILE_DATA.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#7A0000] to-red-800 text-white font-bold text-xs shadow-lg shadow-[#7A0000]/25 hover:from-[#990000] hover:to-red-900 transition-all flex items-center justify-center gap-2"
+              <button
+                type="button"
+                onClick={() => setIsCvModalOpen(true)}
+                className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#7A0000] to-red-800 text-white font-bold text-xs shadow-lg shadow-[#7A0000]/25 hover:from-[#990000] hover:to-red-900 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
                 id="contact-btn-download-resume"
               >
                 <Download className="w-4 h-4" />
                 <span>Download CV</span>
-              </a>
+              </button>
             </div>
           </motion.div>
 
@@ -270,6 +271,12 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Curriculum Vitae Coming Soon Window Modal */}
+      <CvComingSoonModal
+        isOpen={isCvModalOpen}
+        onClose={() => setIsCvModalOpen(false)}
+      />
     </section>
   );
 };

@@ -51,6 +51,20 @@ export interface LanguageItem {
   flagCode: string;
 }
 
+export interface EducationItem {
+  institution: string;
+  major: string;
+  period: string;
+  location?: string;
+  status?: string;
+}
+
+export interface HobbyItem {
+  title: string;
+  description: string;
+  iconName?: string;
+}
+
 export interface ContactFormData {
   name: string;
   email: string;

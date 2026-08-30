@@ -97,34 +97,31 @@ export const SkillsSection: React.FC = () => {
     const matchesCategory = skill.category === selectedCategory;
     const matchesSearch =
       skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      skill.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       skill.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <section id="skills" className="py-16 sm:py-20 relative">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <section id="skills" className="py-14 sm:py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#7A0000] dark:text-red-400">
-            Technical & Soft Skills
+            Capabilities & Competencies
           </span>
-          <h2 className="mt-1.5 sm:mt-2 text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Skills & Competencies
+          <h2 className="mt-1.5 sm:mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+            Skills & Expertise
           </h2>
-          <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-600 dark:text-slate-300">
-            Core capabilities across data analytics, programming, languages, leadership, and creative execution
+          <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-slate-300">
+            Core skills across technical data analysis, languages, communication, and creative tools
           </p>
-          <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-[11px] font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Active Student Practitioner • Continuously Learning</span>
-          </div>
           <div className="mt-3 w-16 h-1 bg-[#7A0000] mx-auto rounded-full" />
         </div>
 
-        {/* Category Controls & Search */}
-        <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-3.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-2xl border border-gray-100 dark:border-slate-700/80 shadow-sm">
-          {/* Category Tabs (Grouped without 'ALL') */}
+        {/* Category Controls & Search Bar */}
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-3 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-2xl border border-gray-100 dark:border-slate-700/80 shadow-xs">
+          {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
             {categories.map((cat) => {
               const count = SKILLS_DATA.filter((s) => s.category === cat).length;
@@ -133,7 +130,7 @@ export const SkillsSection: React.FC = () => {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
                     isSelected
                       ? 'bg-[#7A0000] text-white shadow-sm shadow-[#7A0000]/30'
                       : 'text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700'
@@ -156,14 +153,14 @@ export const SkillsSection: React.FC = () => {
           </div>
 
           {/* Search Box */}
-          <div className="relative w-full md:w-64 shrink-0">
+          <div className="relative w-full md:w-60 shrink-0">
             <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search skill or tech..."
+              placeholder="Search skill..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-8 py-2 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#7A0000]"
+              className="w-full pl-9 pr-8 py-1.5 sm:py-2 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#7A0000]"
               id="skill-search-input"
             />
             {searchQuery && (
@@ -177,8 +174,11 @@ export const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Skills Grid - Clean display cards without pop-up windows */}
-        <motion.div layout className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+        {/* Compact Skills Grid - 3 columns across */}
+        <motion.div
+          layout
+          className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-3.5"
+        >
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill) => {
               const IconComponent = ICON_MAP[skill.iconName] || Code;
@@ -186,29 +186,25 @@ export const SkillsSection: React.FC = () => {
                 <motion.div
                   key={skill.name}
                   layout
-                  initial={{ opacity: 0, scale: 0.96 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-gray-100 dark:border-slate-700/80 shadow-xs hover:border-[#7A0000]/30 transition-all select-none group"
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className="p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-gray-100 dark:border-slate-700/80 shadow-2xs hover:border-[#7A0000]/40 hover:shadow-xs transition-all select-none group flex items-center gap-3"
+                  id={`skill-card-${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center group-hover:bg-[#7A0000] group-hover:text-white transition-colors shrink-0">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-gray-900 dark:text-white group-hover:text-[#7A0000] dark:group-hover:text-red-400 transition-colors">
-                        {skill.name}
-                      </h4>
-                      <span className="text-[10px] font-semibold text-gray-400 dark:text-slate-400 uppercase tracking-wider">
-                        {skill.category}
-                      </span>
-                    </div>
+                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/60 text-[#7A0000] dark:text-red-400 flex items-center justify-center shrink-0 group-hover:bg-[#7A0000] group-hover:text-white transition-all shadow-2xs">
+                    <IconComponent className="w-5 h-5" />
                   </div>
 
-                  <p className="mt-3 text-xs text-gray-500 dark:text-slate-400 leading-relaxed">
-                    {skill.description}
-                  </p>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-bold text-xs sm:text-sm text-gray-900 dark:text-white truncate group-hover:text-[#7A0000] dark:group-hover:text-red-400 transition-colors">
+                      {skill.name}
+                    </h4>
+                    <p className="text-[10px] sm:text-[11px] font-medium text-gray-400 dark:text-slate-400 truncate mt-0.5">
+                      {skill.category}
+                    </p>
+                  </div>
                 </motion.div>
               );
             })}
@@ -216,8 +212,8 @@ export const SkillsSection: React.FC = () => {
         </motion.div>
 
         {filteredSkills.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-slate-400 text-sm">
-            No skills found matching "{searchQuery}".
+          <div className="text-center py-10 text-gray-500 dark:text-slate-400 text-xs sm:text-sm">
+            No skills found matching &ldquo;{searchQuery}&rdquo;.
           </div>
         )}
       </div>

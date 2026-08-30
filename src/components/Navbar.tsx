@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, FileText, Menu, X, Code2 } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -68,19 +68,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-1.5 sm:gap-2.5 group shrink-0"
+          className="hidden md:inline-flex items-center text-sm sm:text-base font-extrabold text-gray-900 dark:text-white tracking-tight shrink-0 hover:text-[#7A0000] dark:hover:text-red-400 transition-colors"
           id="nav-brand-logo"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#7A0000] flex items-center justify-center text-white shadow-md shadow-[#7A0000]/30 group-hover:scale-105 transition-transform duration-200">
-            <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />
-          </div>
-          <span className="hidden sm:inline text-sm sm:text-base font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Joanna's Portfolio
-          </span>
+          Joanna&apos;s Portfolio
         </a>
 
         {/* Navigation Links (Positioned directly between Logo and Buttons) */}
-        <nav className="flex items-center gap-1 bg-gray-100/80 dark:bg-slate-800/80 p-1 sm:p-1.5 rounded-full border border-gray-200/80 dark:border-slate-700/70 backdrop-blur-md overflow-x-auto no-scrollbar max-w-[calc(100vw-130px)] sm:max-w-none shadow-xs">
+        <nav className="flex items-center gap-1 sm:gap-1.5 bg-gray-100/90 dark:bg-slate-800/90 p-1 sm:p-1.5 rounded-full border border-gray-200/80 dark:border-slate-700/70 backdrop-blur-md overflow-x-auto no-scrollbar max-w-[calc(100vw-110px)] sm:max-w-none shadow-xs">
           {NAV_ITEMS.map((item) => {
             const sectionId = item.href.substring(1);
             const isActive = activeSection === sectionId;
@@ -89,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-all duration-200 shrink-0 ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 shrink-0 ${
                   isActive
                     ? 'bg-[#7A0000] text-white shadow-sm shadow-[#7A0000]/25'
                     : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-slate-700/50'
