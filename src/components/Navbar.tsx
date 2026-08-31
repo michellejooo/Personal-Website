@@ -63,19 +63,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'py-5 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-1.5 sm:gap-4">
-        {/* Brand Logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
+        {/* Brand Logo (Always visible on mobile and desktop) */}
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="hidden md:inline-flex items-center text-sm sm:text-base font-extrabold text-gray-900 dark:text-white tracking-tight shrink-0 hover:text-[#7A0000] dark:hover:text-red-400 transition-colors"
+          className="flex items-center gap-2 text-sm sm:text-base font-black text-gray-900 dark:text-white tracking-tight shrink-0 hover:text-[#7A0000] dark:hover:text-red-400 transition-colors"
           id="nav-brand-logo"
         >
-          Joanna&apos;s Portfolio
+          <span className="w-2 h-2 rounded-full bg-[#7A0000] dark:bg-red-400 animate-pulse inline-block" />
+          <span>Joanna<span className="text-[#7A0000] dark:text-red-400"> Portfolio</span></span>
         </a>
 
-        {/* Navigation Links (Positioned directly between Logo and Buttons) */}
-        <nav className="flex items-center gap-1 sm:gap-1.5 bg-gray-100/90 dark:bg-slate-800/90 p-1 sm:p-1.5 rounded-full border border-gray-200/80 dark:border-slate-700/70 backdrop-blur-md overflow-x-auto no-scrollbar max-w-[calc(100vw-110px)] sm:max-w-none shadow-xs">
+        {/* Navigation Links - Desktop Only (Hidden on mobile since hamburger menu is used) */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 bg-gray-100/90 dark:bg-slate-800/90 p-1 sm:p-1.5 rounded-full border border-gray-200/80 dark:border-slate-700/70 backdrop-blur-md shadow-xs">
           {NAV_ITEMS.map((item) => {
             const sectionId = item.href.substring(1);
             const isActive = activeSection === sectionId;
