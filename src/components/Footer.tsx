@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-white dark:bg-[#0B1120] border-t border-gray-200/80 dark:border-slate-800 py-10 transition-colors">
+    <footer className="bg-white dark:bg-[#0B0F17] border-t border-gray-200/80 dark:border-slate-800 py-10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Quick Navigation Links */}

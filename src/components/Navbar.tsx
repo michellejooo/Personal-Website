@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'py-3 backdrop-blur-md bg-white/80 dark:bg-[#0F172A]/85 border-b border-gray-200/50 dark:border-slate-800/80 shadow-sm'
+          ? 'py-3 backdrop-blur-md bg-white/95 dark:bg-[#0B0F17]/95 border-b border-gray-200/80 dark:border-slate-800 shadow-sm'
           : 'py-5 bg-transparent'
       }`}
     >
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Navigation Menu Overlay (Available for both mobile and desktop toggling) */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
+        <div className="absolute top-full left-0 right-0 bg-white dark:bg-[#0B0F17] border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-3 border-b border-gray-100 dark:border-slate-800">
               {NAV_ITEMS.map((item) => {

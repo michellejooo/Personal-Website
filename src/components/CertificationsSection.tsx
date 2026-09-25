@@ -8,7 +8,7 @@ export const CertificationsSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   return (
-    <section id="certifications" className="py-16 bg-slate-50/50 dark:bg-slate-900/40 relative">
+    <section id="certifications" className="py-16 sm:py-20 bg-gray-50/80 dark:bg-[#0D121F] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto">
@@ -33,18 +33,16 @@ export const CertificationsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: idx * 0.1 }}
-              className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-800/95 border border-gray-200 dark:border-slate-700/80 shadow-md hover:border-[#7A0000]/40 dark:hover:border-red-500/40 transition-all flex flex-col md:flex-row gap-5 items-center group relative overflow-hidden"
+              className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#131B2E] border border-gray-200 dark:border-slate-800 shadow-sm hover:border-[#7A0000]/40 dark:hover:border-red-500/40 transition-all flex flex-col md:flex-row gap-5 items-start md:items-center group relative"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#7A0000]/5 dark:bg-red-500/10 rounded-bl-full pointer-events-none" />
-
               {/* Certificate Image Thumbnail Preview */}
-              <div className="w-full md:w-56 shrink-0 relative group/img cursor-pointer" onClick={() => setSelectedCert(cert)}>
-                <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-slate-600 shadow-xs bg-gray-100 dark:bg-slate-900 aspect-4/3 relative">
+              <div className="w-full md:w-60 shrink-0 relative group/img cursor-pointer" onClick={() => setSelectedCert(cert)}>
+                <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-xs bg-gray-50 dark:bg-slate-900 aspect-[16/10] sm:aspect-[4/3] relative flex items-center justify-center">
                   {cert.image ? (
                     <img
                       src={cert.image}
                       alt={cert.title}
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain p-1.5 group-hover/img:scale-105 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -57,7 +55,7 @@ export const CertificationsSection: React.FC = () => {
                     <span>Preview</span>
                   </div>
                 </div>
-                <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/75 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+                <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-medium flex items-center gap-1 shadow-sm">
                   <Sparkles className="w-2.5 h-2.5 text-amber-400" />
                   Coursera • Google
                 </span>
@@ -66,12 +64,12 @@ export const CertificationsSection: React.FC = () => {
               {/* Certificate Info Details */}
               <div className="flex-1 w-full flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold flex items-center gap-1 border border-emerald-200 dark:border-emerald-800">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-1 border border-emerald-200 dark:border-emerald-800">
                       <ShieldCheck className="w-3 h-3" />
                       <span>Verified Specialization ({cert.date})</span>
                     </span>
-                    <span className="text-[11px] font-mono text-gray-400 dark:text-slate-500">
+                    <span className="text-[11px] font-mono text-gray-500 dark:text-slate-400">
                       ID: {cert.credentialId}
                     </span>
                   </div>
@@ -83,20 +81,20 @@ export const CertificationsSection: React.FC = () => {
                     {cert.title}
                   </h3>
 
-                  <p className="text-xs font-medium text-gray-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-xs font-medium text-gray-500 dark:text-slate-400 mt-1">
                     {cert.issuer} {cert.recipient ? `• Awarded to ${cert.recipient}` : ''}
                   </p>
 
                   {/* Topics Covered */}
-                  <div className="mt-3">
+                  <div className="mt-3.5">
                     <div className="flex flex-wrap gap-1.5">
                       {cert.topics.slice(0, 6).map((topic) => (
                         <span
                           key={topic}
-                          className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-gray-100 dark:bg-slate-700/70 text-gray-700 dark:text-slate-200 text-[11px] font-medium border border-gray-200/70 dark:border-slate-600/70"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 text-[11px] font-medium border border-gray-200/80 dark:border-slate-700/80"
                         >
-                          <CheckCircle2 className="w-2.5 h-2.5 text-[#7A0000] dark:text-red-400" />
-                          {topic}
+                          <CheckCircle2 className="w-2.5 h-2.5 text-[#7A0000] dark:text-red-400 shrink-0" />
+                          <span>{topic}</span>
                         </span>
                       ))}
                     </div>
@@ -104,29 +102,27 @@ export const CertificationsSection: React.FC = () => {
                 </div>
 
                 {/* Card Action Buttons */}
-                <div className="mt-4 pt-3 border-t border-gray-100 dark:border-slate-700/70 flex items-center justify-end gap-2">
-                  <div className="flex items-center gap-2">
-                    {cert.credentialUrl && (
-                      <a
-                        href={cert.credentialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-xl bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 text-gray-800 dark:text-slate-200 text-xs font-semibold flex items-center gap-1 border border-gray-200 dark:border-slate-600 transition-colors"
-                        id={`btn-verify-cert-${cert.id}`}
-                      >
-                        <ExternalLink className="w-3 h-3" />
-                        <span>Verify Coursera</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={() => setSelectedCert(cert)}
-                      className="px-3.5 py-1.5 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold shadow-xs transition-colors flex items-center gap-1"
-                      id={`btn-view-cert-${cert.id}`}
+                <div className="mt-5 pt-3.5 border-t border-gray-100 dark:border-slate-800/80 flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-end gap-2.5">
+                  {cert.credentialUrl && (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none justify-center px-3.5 py-2 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 text-gray-800 dark:text-slate-200 text-xs font-semibold flex items-center gap-1.5 border border-gray-200 dark:border-slate-700 transition-colors"
+                      id={`btn-verify-cert-${cert.id}`}
                     >
-                      <Award className="w-3 h-3" />
-                      <span>View Certificate</span>
-                    </button>
-                  </div>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Verify Coursera</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setSelectedCert(cert)}
+                    className="flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold shadow-xs transition-colors flex items-center gap-1.5"
+                    id={`btn-view-cert-${cert.id}`}
+                  >
+                    <Award className="w-3.5 h-3.5" />
+                    <span>View Certificate</span>
+                  </button>
                 </div>
               </div>
             </motion.div>

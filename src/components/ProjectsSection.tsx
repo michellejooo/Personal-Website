@@ -23,7 +23,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
   });
 
   return (
-    <section id="projects" className="py-20 bg-slate-50/50 dark:bg-slate-900/40 relative">
+    <section id="projects" className="py-16 sm:py-20 bg-white dark:bg-[#0B0F17] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto">

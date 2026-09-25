@@ -9,7 +9,6 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { NotFoundView } from './components/NotFoundView';
 import { EssayModal } from './components/EssayModal';
-import { LiveWallpaper } from './components/LiveWallpaper';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -65,10 +64,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFC]/65 dark:bg-[#0F172A]/75 text-[#1F2937] dark:text-[#F8FAFC] transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white relative">
-      {/* Dynamic Live Wallpaper for Light & Dark Mode across all devices */}
-      <LiveWallpaper darkMode={darkMode} />
-
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-white dark:bg-[#0B0F17] text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white relative">
       {/* Top Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-slate-800 z-50 pointer-events-none">
         <div

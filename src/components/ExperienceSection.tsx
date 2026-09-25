@@ -83,7 +83,7 @@ export const ExperienceSection: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="py-16 sm:py-20 relative">
+    <section id="experience" className="py-16 sm:py-20 relative bg-white dark:bg-[#0B0F17] transition-colors">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">

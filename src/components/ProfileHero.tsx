@@ -106,11 +106,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   };
 
   return (
-    <section id="profile" className="pt-24 sm:pt-28 lg:pt-36 pb-16 lg:pb-24 relative overflow-hidden">
-      {/* Background Deep Red Ambient Glow Effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#7A0000]/10 dark:bg-[#7A0000]/15 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-10 right-10 w-72 h-72 bg-red-500/5 rounded-full blur-2xl pointer-events-none -z-10" />
-
+    <section id="profile" className="pt-24 sm:pt-28 lg:pt-36 pb-16 lg:pb-24 relative overflow-hidden bg-white dark:bg-[#0B0F17] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Avatar & Quick Profile Card */}

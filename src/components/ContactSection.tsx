@@ -20,7 +20,7 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="py-16 sm:py-20 relative bg-white dark:bg-[#0B0F17] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">

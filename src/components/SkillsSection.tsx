@@ -109,7 +109,7 @@ export const SkillsSection: React.FC = () => {
   });
 
   return (
-    <section id="skills" className="py-12 sm:py-16 relative">
+    <section id="skills" className="py-16 sm:py-20 relative bg-gray-50/80 dark:bg-[#0D121F] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
