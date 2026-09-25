@@ -12,12 +12,28 @@ export interface Project {
   description: string;
   longDescription: string;
   techStack: string[];
-  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics';
+  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics' | 'Lomba Essay';
   image: string;
   status: string;
-  githubUrl: string;
-  liveUrl: string;
+  githubUrl?: string;
+  liveUrl?: string;
   features: string[];
+  essayUrl?: string;
+}
+
+export interface AwardItem {
+  id: string;
+  title: string;
+  rank: string;
+  competition: string;
+  year: string;
+  organizer: string;
+  projectName: string;
+  description: string;
+  contributions: string[];
+  tags: string[];
+  essayUrl?: string;
+  image?: string;
 }
 
 export interface ExperienceItem {
@@ -28,6 +44,9 @@ export interface ExperienceItem {
   description?: string;
   responsibilities: string[];
   skillsUsed: string[];
+  image?: string;
+  images?: string[];
+  imageCaption?: string;
 }
 
 export interface Certification {

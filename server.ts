@@ -1,16 +1,35 @@
 import express from 'express';
 import path from 'path';
-import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
+const getDistPath = () => {
+  if (typeof __dirname !== 'undefined') {
+    return path.basename(__dirname) === 'dist' ? __dirname : path.resolve(__dirname, 'dist');
+  }
+  return path.resolve(process.cwd(), 'dist');
+};
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+
+  // In AI Studio dev sandbox, nginx reverse proxy listens on 8080 and forwards to 3000.
+  // In deployed Cloud Run, Cloud Run sets PORT (usually 8080) and expects the app to listen on that port.
+  const isDev = Boolean(process.env.CONTROL_PLANE_PORT) || process.env.NODE_ENV === 'development';
+  const PORT = isDev ? 3000 : (Number(process.env.PORT) || 3000);
 
   app.use(express.json());
+
+  // Health check endpoints for Cloud Run & load balancers
+  app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', environment: isDev ? 'development' : 'production' });
+  });
+
+  app.get('/healthz', (req, res) => {
+    res.status(200).send('OK');
+  });
 
   // API Routes
   app.post('/api/ai-assistant', async (req, res) => {
@@ -55,24 +74,44 @@ async function startServer() {
     }
   });
 
-  // Vite Middleware in Development / Static Files in Production
-  if (process.env.NODE_ENV !== 'production') {
+  // In development, attach Vite middleware; in production, serve pre-built dist assets
+  if (isDev) {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = getDistPath();
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.sendFile(path.resolve(distPath, 'index.html'));
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://0.0.0.0:${PORT}`);
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${PORT} (${isDev ? 'dev' : 'prod'})`);
+  });
+
+  // Graceful shutdown for container lifecycles (Cloud Run SIGTERM)
+  process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received: closing HTTP server');
+    server.close(() => {
+      console.log('HTTP server closed');
+      process.exit(0);
+    });
+  });
+
+  process.on('SIGINT', () => {
+    console.log('SIGINT signal received: closing HTTP server');
+    server.close(() => {
+      process.exit(0);
+    });
   });
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error('Fatal error starting server:', err);
+  process.exit(1);
+});

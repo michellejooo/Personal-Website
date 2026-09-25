@@ -1,12 +1,16 @@
-import { Skill, Project, ExperienceItem, Certification, LanguageItem, EducationItem } from '../types';
+import { Skill, Project, AwardItem, ExperienceItem, Certification, LanguageItem, EducationItem } from '../types';
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
+import profileAvatarFallbackImg from '../assets/images/joanna_avatar_1785572098877.jpg';
 import projectPortfolioImg from '../assets/images/website_profile.png';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
 import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
 import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
+import beaquaPreviewImg from '../assets/images/beaqua_system_preview.png';
 import courseraCertImg from '../assets/images/sertifikatdata.png';
+import googleAiCertImg from '../assets/images/google_ai_cert.jpg';
 
 export const PROFILE_AVATAR = profileAvatarImg;
+export const PROFILE_AVATAR_FALLBACK = profileAvatarFallbackImg;
 
 export const EDUCATION_DATA: EducationItem[] = [
   {
@@ -39,9 +43,8 @@ export const PROFILE_DATA = {
     'Data Analyst',
   ],
   stats: [
-    { label: 'Featured Projects', value: '4', sub: 'Web, Data & Full-stack' },
-    { label: 'Certifications', value: '1', sub: 'Google Data Analysis with Python' },
-    { label: 'Languages (Fluent)', value: '1', sub: 'English' },
+    { label: 'Featured Projects', value: '5', sub: 'Web, Data & Research' },
+    { label: 'Certifications', value: '2', sub: 'Google AI & Data Analysis' },
   ],
   aboutText:
     'IT Student at Telkom University specializing in Web Dev, Data Analysis, and AI. Strong leader and problem-solver, ready to adapt and contribute effectively in team or solo roles.',
@@ -59,6 +62,9 @@ export const PROFILE_DATA = {
 };
 
 export const SKILLS_DATA: Skill[] = [
+  // Technical & Data (including Scientific Paper & Proposal Writing)
+  { name: 'Scientific Paper', category: 'Technical & Data', level: 92, iconName: 'FileText', description: 'Academic drafting & research paper' },
+  { name: 'Proposal Writing', category: 'Technical & Data', level: 88, iconName: 'FileCheck', description: 'Project & grant proposal writing' },
   { name: 'Data Analyst', category: 'Technical & Data', level: 85, iconName: 'BarChart2', description: 'Data cleaning & exploratory analysis' },
   { name: 'Prompt Engineer', category: 'Technical & Data', level: 88, iconName: 'Bot', description: 'AI prompt design & optimization' },
   { name: 'Python', category: 'Technical & Data', level: 85, iconName: 'Terminal', description: 'Logic, scripts & automation' },
@@ -70,16 +76,18 @@ export const SKILLS_DATA: Skill[] = [
   { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookups & pivot tables' },
   { name: 'Microsoft Word', category: 'Technical & Data', level: 90, iconName: 'FileText', description: 'Reports & documentation' },
 
-  { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native written & verbal fluency' },
-  { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Professional & academic fluency' },
-
+  // Communication & Leadership
   { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Verbal & written communication' },
   { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Presentations & academic speaking' },
   { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Team guidance & project coordination' },
   { name: 'Team Work', category: 'Communication & Leadership', level: 90, iconName: 'UserCheck', description: 'Active collaboration & team execution' },
 
+  // Languages & Fluency
+  { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native written & verbal fluency' },
+  { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Professional & academic fluency' },
+
+  // Professional & Creative
   { name: 'Problem Solving', category: 'Professional & Creative', level: 88, iconName: 'Brain', description: 'Analytical thinking & solutions' },
-  { name: 'Proposal Writing', category: 'Professional & Creative', level: 85, iconName: 'FileCheck', description: 'Formal proposals & planning' },
   { name: 'Design Presentation', category: 'Professional & Creative', level: 85, iconName: 'Palette', description: 'Engaging pitch decks & slide design' },
   { name: 'Keyboardist', category: 'Professional & Creative', level: 88, iconName: 'Activity', description: 'Musical performance & keyboard harmony' },
 ];
@@ -166,12 +174,60 @@ export const PROJECTS_DATA: Project[] = [
       'Seamless integration with Python data processing engines & SQL queries',
     ],
   },
+  {
+    id: 'beaqua-system',
+    title: 'BEAQUA SYSTEM: Integrasi Bioteknologi dan Platform Distribusi dalam Valorisasi Aquatic By-Products untuk Pengembangan Bahan Aktif Kosmetik Berkelanjutan',
+    description:
+      'A biotechnology-driven circular economy platform transforming aquatic by-products into active cosmetic ingredients with digital traceability.',
+    longDescription:
+      `Developed as a scientific paper project for the Aprotech Fair 2026 Essay Competition, a student-led competition organized by the Department of Aquatic Product Technology, IPB University, focusing on creativity, technological innovation, and the utilization of aquatic resources. The 2026 competition carried the theme “BlueTech Innovation: Exploring the Power of Aquatic By-Products.”
+Our project, BeAqua System, proposed an integrated biotechnology and distribution platform to valorize aquatic by-products into sustainable cosmetic active ingredients.
+
+My Contributions:
+- Designed the UI/UX prototype and platform flow.
+- Conducted national and international benchmarking to compare similar projects and identify BeAqua’s competitive advantages.
+- Contributed to system mapping, research, analysis, and scientific writing.`,
+    techStack: ['Lomba Essay', 'Circular Economy', 'Biotechnology', 'Traceability', 'UI/UX Flow'],
+    category: 'Lomba Essay',
+    image: beaquaPreviewImg,
+    status: 'Top 15 Penyisihan Essay',
+    features: [
+      'Top 15 Penyisihan Essay',
+      'Aprotech Fair 2026 (IPB University)',
+    ],
+  },
+];
+
+export const AWARDS_DATA: AwardItem[] = [
+  {
+    id: 'aprotech-fair-2026',
+    title: 'Aprotech Fair 2026 Essay Competition',
+    rank: 'Ranked 6th – Top 15 Finalists',
+    competition: 'Aprotech Fair 2026 Essay Competition',
+    year: '2026',
+    organizer: 'IPB University',
+    projectName: 'BeAqua System',
+    description:
+      'Circular biotechnology concept transforming aquatic by-products into sustainable cosmetic active ingredients with digital traceability.',
+    contributions: [
+      'UI/UX & User Flow: Structured end-to-end platform flow from raw-material data to bioconversion, QA, and distribution.',
+      'Fishbone Analysis: Mapped aquatic by-product challenges into an integrated circular economy roadmap.',
+    ],
+    tags: [
+      'Biotechnology',
+      'UI/UX Flow',
+      'Fishbone Analysis',
+      'Circular Economy',
+    ],
+    essayUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
+    image: beaquaPreviewImg,
+  },
 ];
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'exp-0',
-    role: 'Backend Development',
+    role: 'Backend Development Intern',
     organization: 'Advanced Software Engineer Lab',
     period: 'July 2026 - Now',
     responsibilities: [
@@ -249,6 +305,34 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 ];
 
 export const CERTIFICATIONS_DATA: Certification[] = [
+  {
+    id: 'cert-1',
+    title: 'Google AI Professional Certificate',
+    issuer: 'Coursera (Google)',
+    date: 'August 2026',
+    recipient: 'Joanna Michelle Tambunan',
+    image: googleAiCertImg,
+    topics: [
+      'Artificial Intelligence (AI)',
+      'Generative AI',
+      'Prompt Engineering',
+      'AI for Data Analysis',
+      'AI for App Building',
+      'Research & Insights',
+    ],
+    courses: [
+      'AI Fundamentals',
+      'AI for Brainstorming and Planning',
+      'AI for Research and Insights',
+      'AI for Writing and Communicating',
+      'AI for Content Creation',
+      'AI for Data Analysis',
+      'AI for App Building',
+      'AI for App Deployment',
+    ],
+    credentialId: 'VR8W89CWXC45',
+    credentialUrl: 'https://coursera.org/share/fc60274fa1ddb54b1e0950488bb6645c',
+  },
   {
     id: 'cert-2',
     title: 'Google Data Analysis with Python',

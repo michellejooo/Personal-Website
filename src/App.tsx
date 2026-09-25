@@ -7,9 +7,9 @@ import { ExperienceSection } from './components/ExperienceSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { ProjectPreviewModal } from './components/ProjectPreviewModal';
 import { NotFoundView } from './components/NotFoundView';
-import { Project } from './types';
+import { EssayModal } from './components/EssayModal';
+import { LiveWallpaper } from './components/LiveWallpaper';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -25,9 +25,16 @@ export default function App() {
   });
 
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [previewProject, setPreviewProject] = useState<Project | null>(null);
-  const [previewMode, setPreviewMode] = useState<'live' | 'code'>('live');
   const [show404, setShow404] = useState(false);
+  const [essayModalOpen, setEssayModalOpen] = useState(false);
+  const [activeEssayUrl, setActiveEssayUrl] = useState('https://drive.google.com/drive/folders/1example?usp=sharing');
+
+  const handleOpenEssay = (url?: string) => {
+    if (url) {
+      setActiveEssayUrl(url);
+    }
+    setEssayModalOpen(true);
+  };
 
   // Sync dark mode class with root html
   useEffect(() => {
@@ -53,22 +60,15 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOpenLivePreview = (project: Project) => {
-    setPreviewProject(project);
-    setPreviewMode('live');
-  };
-
-  const handleOpenCodePreview = (project: Project) => {
-    setPreviewProject(project);
-    setPreviewMode('code');
-  };
-
   if (show404) {
     return <NotFoundView onReturnHome={() => setShow404(false)} />;
   }
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFC] dark:bg-[#0F172A] text-[#1F2937] dark:text-[#F8FAFC] transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFC]/65 dark:bg-[#0F172A]/75 text-[#1F2937] dark:text-[#F8FAFC] transition-colors duration-300 font-sans selection:bg-[#7A0000] selection:text-white relative">
+      {/* Dynamic Live Wallpaper for Light & Dark Mode across all devices */}
+      <LiveWallpaper darkMode={darkMode} />
+
       {/* Top Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-slate-800 z-50 pointer-events-none">
         <div
@@ -92,10 +92,7 @@ export default function App() {
         <SkillsSection />
 
         {/* Featured Projects */}
-        <ProjectsSection
-          onOpenLivePreview={handleOpenLivePreview}
-          onOpenCodePreview={handleOpenCodePreview}
-        />
+        <ProjectsSection onOpenEssay={handleOpenEssay} />
 
         {/* Work & Leadership Experience */}
         <ExperienceSection />
@@ -110,11 +107,11 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Interactive Project Preview Modal */}
-      <ProjectPreviewModal
-        project={previewProject}
-        mode={previewMode}
-        onClose={() => setPreviewProject(null)}
+      {/* Scientific Essay & Concept Paper Viewer Modal */}
+      <EssayModal
+        isOpen={essayModalOpen}
+        onClose={() => setEssayModalOpen(false)}
+        essayUrl={activeEssayUrl}
       />
     </div>
   );

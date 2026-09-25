@@ -25,7 +25,7 @@ export const CertificationsSection: React.FC = () => {
         </div>
 
         {/* Certifications Grid - Compact & with Live Certificate Preview */}
-        <div className="mt-8 max-w-3xl mx-auto">
+        <div className="mt-8 max-w-4xl mx-auto space-y-6">
           {CERTIFICATIONS_DATA.map((cert, idx) => (
             <motion.div
               key={cert.id}
@@ -180,12 +180,12 @@ export const CertificationsSection: React.FC = () => {
                   </div>
                 ) : null}
 
-                {/* 6 Courses List */}
+                {/* Courses List */}
                 {selectedCert.courses && (
                   <div className="w-full mt-4 p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700">
                     <p className="text-xs font-bold text-gray-800 dark:text-slate-200 mb-2 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400" />
-                      <span>6 Specialization Courses Completed:</span>
+                      <span>{selectedCert.courses.length} Specialization Courses Completed:</span>
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-gray-600 dark:text-slate-300">
                       {selectedCert.courses.map((course, idx) => (

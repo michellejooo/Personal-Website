@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS_DATA } from '../data/portfolioData';
-import { Project } from '../types';
-import { Github, ExternalLink, Play, Layers, Sparkles, CheckCircle, Code2 } from 'lucide-react';
+import { Github, CheckCircle, FileText, ExternalLink } from 'lucide-react';
 
 interface ProjectsSectionProps {
-  onOpenLivePreview: (project: Project) => void;
-  onOpenCodePreview: (project: Project) => void;
+  onOpenEssay?: (essayUrl?: string) => void;
 }
 
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
-  onOpenLivePreview,
-  onOpenCodePreview,
-}) => {
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay }) => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
-  const filters = ['All', 'Data Analytics', 'Full Stack', 'Web Development', 'UI/UX'];
+  const filters = ['All', 'Lomba Essay', 'Web Development', 'Full Stack', 'Data Analytics', 'UI/UX'];
 
   const filteredProjects = PROJECTS_DATA.filter((project) => {
     if (activeFilter === 'All') return true;
+    if (activeFilter === 'Lomba Essay') return project.category === 'Lomba Essay';
     if (activeFilter === 'Data Analytics') return project.category === 'Data Analytics';
     if (activeFilter === 'Full Stack') return project.category === 'Full Stack';
     if (activeFilter === 'Web Development') return project.category === 'Web Development';
-    if (activeFilter === 'UI/UX') return project.category === 'Full Stack' || project.title === 'Echo';
+    if (activeFilter === 'UI/UX') return project.category === 'UI/UX' || project.category === 'Full Stack' || project.title === 'Echo';
     return true;
   });
 
@@ -76,7 +72,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 id={`project-card-${project.id}`}
               >
                 {/* Image Thumbnail Container */}
-                <div className="relative aspect-video overflow-hidden bg-slate-900 group">
+                <div className={`relative aspect-video overflow-hidden ${project.id === 'beaqua-system' ? 'bg-white border-b border-gray-200 dark:border-slate-700' : 'bg-slate-900'} group`}>
                   <img
                     src={project.image}
                     alt={project.title}
@@ -85,28 +81,21 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   />
 
                   {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  {project.id === 'beaqua-system' ? (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  )}
 
                   {/* Status Tag */}
-                  <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
+                  <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{project.status}</span>
                   </div>
 
                   {/* Category Pill */}
-                  <div className="absolute top-3 right-3 bg-[#7A0000]/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg">
+                  <div className="absolute top-3 right-3 bg-[#7A0000]/95 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shadow-sm">
                     {project.category}
-                  </div>
-
-                  {/* Hover Overlay Action Button */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-xs">
-                    <button
-                      onClick={() => onOpenLivePreview(project)}
-                      className="px-4 py-2 rounded-xl bg-[#7A0000] text-white text-xs font-bold shadow-lg flex items-center gap-2 hover:bg-[#990000] transform scale-90 group-hover:scale-100 transition-transform"
-                    >
-                      <Play className="w-3.5 h-3.5 fill-current" />
-                      <span>Interactive Live Demo</span>
-                    </button>
                   </div>
                 </div>
 
@@ -146,28 +135,53 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </div>
 
                     {/* Action Links */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => onOpenLivePreview(project)}
-                        className="flex-1 py-2 px-3 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors"
-                        id={`btn-live-demo-${project.id}`}
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Live Demo</span>
-                      </button>
-
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="py-2 px-3 rounded-xl bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600 text-xs font-semibold flex items-center justify-center gap-1.5 border border-gray-200 dark:border-slate-600 transition-colors"
-                        title="View GitHub Repository"
-                        id={`btn-github-${project.id}`}
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">GitHub</span>
-                      </a>
-                    </div>
+                    {project.essayUrl ? (
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            if (onOpenEssay) {
+                              onOpenEssay(project.essayUrl);
+                            } else if (project.essayUrl) {
+                              window.open(project.essayUrl, '_blank', 'noopener,noreferrer');
+                            }
+                          }}
+                          className="flex-1 py-2.5 px-4 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors"
+                          title="View Essay & Concept Paper"
+                          id={`btn-essay-${project.id}`}
+                        >
+                          <FileText className="w-4 h-4" />
+                          <span>View Essay</span>
+                          <ExternalLink className="w-3 h-3 opacity-80" />
+                        </button>
+                        {project.githubUrl && project.githubUrl !== '#' && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="py-2.5 px-3 rounded-xl bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600 text-xs font-semibold flex items-center justify-center gap-1.5 border border-gray-200 dark:border-slate-600 transition-colors"
+                            title="View GitHub Repository"
+                            id={`btn-github-${project.id}`}
+                          >
+                            <Github className="w-4 h-4" />
+                            <span className="hidden sm:inline">GitHub</span>
+                          </a>
+                        )}
+                      </div>
+                    ) : project.githubUrl && project.githubUrl !== '#' && project.githubUrl !== '' ? (
+                      <div className="flex items-center">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors"
+                          title="View GitHub Repository"
+                          id={`btn-github-${project.id}`}
+                        >
+                          <Github className="w-4 h-4" />
+                          <span>View on GitHub</span>
+                        </a>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </motion.div>

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import {
   PROFILE_DATA,
   PROFILE_AVATAR,
+  PROFILE_AVATAR_FALLBACK,
   SKILLS_DATA,
   PROJECTS_DATA,
   EXPERIENCE_DATA,
@@ -15,11 +16,12 @@ import {
   Award,
   GraduationCap,
   ArrowRight,
-  Mail,
   CheckCircle2,
   Wrench,
   Briefcase,
   MapPin,
+  Instagram,
+  Linkedin,
 } from 'lucide-react';
 
 interface ProfileHeroProps {
@@ -65,6 +67,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
     'a Prompt Engineer',
   ];
 
+  const [avatarSrc, setAvatarSrc] = useState(PROFILE_AVATAR);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -123,11 +126,17 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
 
               <div className="relative w-56 h-64 sm:w-64 sm:h-76 md:w-72 md:h-84 lg:w-80 lg:h-[380px] xl:w-96 xl:h-[440px] rounded-[1.75rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
                 <img
-                  src={PROFILE_AVATAR}
+                  src={avatarSrc}
+                  onError={() => {
+                    if (avatarSrc !== PROFILE_AVATAR_FALLBACK) {
+                      setAvatarSrc(PROFILE_AVATAR_FALLBACK);
+                    }
+                  }}
                   alt="Joanna - Information Technology Student"
                   className="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500"
-                  referrerPolicy="no-referrer"
                   id="profile-avatar-img"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -170,14 +179,32 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <button
-                onClick={() => handleScroll('contact')}
-                className="px-6 py-3 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-white font-semibold text-sm border border-gray-200 dark:border-slate-700 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all flex items-center gap-2"
-                id="profile-cta-contact"
-              >
-                <Mail className="w-4 h-4 text-[#7A0000] dark:text-red-400" />
-                <span>Contact Me</span>
-              </button>
+              {/* Social Media & Contact Direct Logos (Instagram, LinkedIn) */}
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={PROFILE_DATA.contact.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:border-transparent transition-all flex items-center justify-center shadow-xs group"
+                  aria-label="Instagram Profile"
+                  title="Instagram Profile"
+                  id="profile-cta-instagram"
+                >
+                  <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </a>
+
+                <a
+                  href={PROFILE_DATA.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all flex items-center justify-center shadow-xs group"
+                  aria-label="LinkedIn Profile"
+                  title="LinkedIn Profile"
+                  id="profile-cta-linkedin"
+                >
+                  <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -201,9 +228,6 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                   <p className="text-xs text-gray-500 dark:text-slate-400">Academic Background</p>
                 </div>
               </div>
-              <span className="text-[11px] font-semibold text-[#7A0000] dark:text-red-400 bg-red-50 dark:bg-red-950/50 px-2.5 py-1 rounded-full border border-red-100 dark:border-red-900/30">
-                {EDUCATION_DATA.length} Institutions
-              </span>
             </div>
 
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

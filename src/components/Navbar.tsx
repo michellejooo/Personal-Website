@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X, Clock } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -22,6 +22,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [activeSection, setActiveSection] = useState('profile');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [timeString, setTimeString] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTimeString(
+        now.toLocaleTimeString('en-GB', {
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        })
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,15 +82,19 @@ export const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Brand Logo (Always visible on mobile and desktop) */}
+        {/* Live Real-time Clock (replacing Joanna Portfolio as requested) */}
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-2 text-sm sm:text-base font-black text-gray-900 dark:text-white tracking-tight shrink-0 hover:text-[#7A0000] dark:hover:text-red-400 transition-colors"
+          className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-gray-100/90 dark:bg-slate-800/90 border border-gray-200/80 dark:border-slate-700/80 text-gray-900 dark:text-white font-mono text-xs sm:text-sm font-bold tracking-wider select-none shadow-2xs hover:border-[#7A0000]/50 dark:hover:border-red-500/50 transition-all shrink-0 group"
           id="nav-brand-logo"
+          title="Waktu Real-time (WIB)"
         >
-          <span className="w-2 h-2 rounded-full bg-[#7A0000] dark:bg-red-400 animate-pulse inline-block" />
-          <span>Joanna<span className="text-[#7A0000] dark:text-red-400"> Portfolio</span></span>
+          <Clock className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0" />
+          <span className="font-mono text-xs sm:text-sm tracking-widest">{timeString || '--:--:--'}</span>
+          <span className="text-[10px] font-sans font-bold text-gray-500 dark:text-slate-400 uppercase tracking-normal">
+            WIB
+          </span>
         </a>
 
         {/* Navigation Links - Desktop Only (Hidden on mobile since hamburger menu is used) */}
