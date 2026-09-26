@@ -16,12 +16,12 @@ import {
   Award,
   GraduationCap,
   ArrowRight,
+  Instagram,
+  Linkedin,
   CheckCircle2,
   Wrench,
   Briefcase,
   MapPin,
-  Instagram,
-  Linkedin,
 } from 'lucide-react';
 
 interface ProfileHeroProps {
@@ -106,7 +106,11 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
   };
 
   return (
-    <section id="profile" className="pt-24 sm:pt-28 lg:pt-36 pb-16 lg:pb-24 relative overflow-hidden bg-white dark:bg-[#0B0F17] transition-colors">
+    <section id="profile" className="pt-24 sm:pt-28 lg:pt-36 pb-16 lg:pb-24 relative overflow-hidden">
+      {/* Background Deep Red Ambient Glow Effects */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#7A0000]/10 dark:bg-[#7A0000]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-red-500/5 rounded-full blur-2xl pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Avatar & Quick Profile Card */}
@@ -130,9 +134,8 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                   }}
                   alt="Joanna - Information Technology Student"
                   className="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500"
+                  referrerPolicy="no-referrer"
                   id="profile-avatar-img"
-                  loading="eager"
-                  decoding="async"
                 />
               </div>
             </div>
@@ -175,32 +178,29 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              {/* Social Media & Contact Direct Logos (Instagram, LinkedIn) */}
-              <div className="flex items-center gap-2.5">
-                <a
-                  href={PROFILE_DATA.contact.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:border-transparent transition-all flex items-center justify-center shadow-xs group"
-                  aria-label="Instagram Profile"
-                  title="Instagram Profile"
-                  id="profile-cta-instagram"
-                >
-                  <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                </a>
+              <a
+                href="https://instagram.com/joannamt_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 hover:border-transparent transition-all shadow-xs flex items-center justify-center group"
+                title="Instagram (@joannamt_)"
+                aria-label="Instagram Profile"
+                id="profile-cta-instagram"
+              >
+                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
 
-                <a
-                  href={PROFILE_DATA.contact.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all flex items-center justify-center shadow-xs group"
-                  aria-label="LinkedIn Profile"
-                  title="LinkedIn Profile"
-                  id="profile-cta-linkedin"
-                >
-                  <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/joannamt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 border border-gray-200 dark:border-slate-700 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all shadow-xs flex items-center justify-center group"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+                id="profile-cta-linkedin"
+              >
+                <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </motion.div>
         </div>
@@ -224,6 +224,9 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                   <p className="text-xs text-gray-500 dark:text-slate-400">Academic Background</p>
                 </div>
               </div>
+              <span className="text-[11px] font-semibold text-[#7A0000] dark:text-red-400 bg-red-50 dark:bg-red-950/50 px-2.5 py-1 rounded-full border border-red-100 dark:border-red-900/30">
+                {EDUCATION_DATA.length} Institutions
+              </span>
             </div>
 
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

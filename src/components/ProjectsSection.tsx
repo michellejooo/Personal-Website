@@ -10,20 +10,19 @@ interface ProjectsSectionProps {
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay }) => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
-  const filters = ['All', 'Lomba Essay', 'Web Development', 'Full Stack', 'Data Analytics', 'UI/UX'];
+  const filters = ['All', 'Data Analytics', 'Full Stack', 'Web Development', 'UI/UX'];
 
   const filteredProjects = PROJECTS_DATA.filter((project) => {
     if (activeFilter === 'All') return true;
-    if (activeFilter === 'Lomba Essay') return project.category === 'Lomba Essay';
     if (activeFilter === 'Data Analytics') return project.category === 'Data Analytics';
     if (activeFilter === 'Full Stack') return project.category === 'Full Stack';
     if (activeFilter === 'Web Development') return project.category === 'Web Development';
-    if (activeFilter === 'UI/UX') return project.category === 'UI/UX' || project.category === 'Full Stack' || project.title === 'Echo';
+    if (activeFilter === 'UI/UX') return project.category === 'UI/UX' || project.category === 'Full Stack';
     return true;
   });
 
   return (
-    <section id="projects" className="py-16 sm:py-20 bg-white dark:bg-[#0B0F17] relative transition-colors">
+    <section id="projects" className="py-20 bg-slate-50/50 dark:bg-slate-900/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto">
@@ -72,7 +71,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                 id={`project-card-${project.id}`}
               >
                 {/* Image Thumbnail Container */}
-                <div className={`relative aspect-video overflow-hidden ${project.id === 'beaqua-system' ? 'bg-white border-b border-gray-200 dark:border-slate-700' : 'bg-slate-900'} group`}>
+                <div className="relative aspect-video overflow-hidden bg-slate-900 group">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -81,41 +80,37 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                   />
 
                   {/* Overlay Gradient */}
-                  {project.id === 'beaqua-system' ? (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                   {/* Status Tag */}
-                  <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>{project.status}</span>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 rounded-full flex items-center gap-1.5 max-w-[72%]">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span className="truncate">{project.status}</span>
                   </div>
 
                   {/* Category Pill */}
-                  <div className="absolute top-3 right-3 bg-[#7A0000]/95 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shadow-sm">
+                  <div className="absolute top-3 right-3 bg-[#7A0000]/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg">
                     {project.category}
                   </div>
                 </div>
 
                 {/* Content Details */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-[#7A0000] dark:group-hover:text-red-400 transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white group-hover:text-[#7A0000] dark:group-hover:text-red-400 transition-colors leading-snug">
                       {project.title}
                     </h3>
 
-                    <p className="mt-2.5 text-xs text-gray-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                    <p className="mt-2.5 text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Features list bullet previews */}
                     <div className="mt-4 space-y-1.5">
-                      {project.features.slice(0, 2).map((feat, idx) => (
+                      {project.features.slice(0, 3).map((feat, idx) => (
                         <div key={idx} className="flex items-start gap-1.5 text-[11px] text-gray-500 dark:text-slate-400">
                           <CheckCircle className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
+                          <span className="leading-tight">{feat}</span>
                         </div>
                       ))}
                     </div>
@@ -145,7 +140,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                               window.open(project.essayUrl, '_blank', 'noopener,noreferrer');
                             }
                           }}
-                          className="flex-1 py-2.5 px-4 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors"
+                          className={`${
+                            project.githubUrl ? 'flex-1' : 'w-full'
+                          } py-2.5 px-4 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors`}
                           title="View Essay & Concept Paper"
                           id={`btn-essay-${project.id}`}
                         >
@@ -167,7 +164,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                           </a>
                         )}
                       </div>
-                    ) : project.githubUrl && project.githubUrl !== '#' && project.githubUrl !== '' ? (
+                    ) : (
                       <div className="flex items-center">
                         <a
                           href={project.githubUrl}
@@ -181,7 +178,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                           <span>View on GitHub</span>
                         </a>
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               </motion.div>

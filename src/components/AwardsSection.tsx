@@ -93,33 +93,32 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ onOpenEssay }) => 
                   {/* Left: Details */}
                   <div className="flex-1 space-y-3">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white tracking-tight leading-snug">
                         {award.projectName}
                       </h3>
-                      <p className="text-xs font-semibold text-[#7A0000] dark:text-red-400">
+                      <p className="text-xs font-semibold text-[#7A0000] dark:text-red-400 mt-1">
                         {award.competition} — {award.organizer}
                       </p>
-                      <p className="mt-1.5 text-xs sm:text-sm text-gray-600 dark:text-slate-300 leading-relaxed">
+                      <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-slate-300 leading-relaxed">
                         {award.description}
                       </p>
                     </div>
 
-                    {/* Contributions - Compact list */}
+                    {/* Contributions - Dynamic list */}
                     <div className="space-y-1.5 pt-1">
-                      <div className="flex items-start gap-2 text-xs text-gray-600 dark:text-slate-300">
-                        <Layers className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0 mt-0.5" />
-                        <p>
-                          <strong className="text-gray-900 dark:text-white font-semibold">UI/UX & User Flow:</strong>{' '}
-                          Structured end-to-end platform flow from raw-material data to bioconversion, QA, and distribution.
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2 text-xs text-gray-600 dark:text-slate-300">
-                        <GitMerge className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0 mt-0.5" />
-                        <p>
-                          <strong className="text-gray-900 dark:text-white font-semibold">Fishbone Analysis:</strong>{' '}
-                          Mapped aquatic by-product challenges into an integrated circular economy roadmap.
-                        </p>
-                      </div>
+                      {award.contributions && award.contributions.length > 0 ? (
+                        award.contributions.map((contrib, cIdx) => (
+                          <div key={cIdx} className="flex items-start gap-2 text-xs text-gray-600 dark:text-slate-300">
+                            <Layers className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0 mt-0.5" />
+                            <p>{contrib}</p>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="flex items-start gap-2 text-xs text-gray-600 dark:text-slate-300">
+                          <Layers className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0 mt-0.5" />
+                          <p>UI/UX prototype development, benchmarking, and competitive analysis.</p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Tags */}

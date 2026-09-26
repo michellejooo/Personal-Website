@@ -5,7 +5,7 @@ import projectPortfolioImg from '../assets/images/website_profile.png';
 import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
 import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
 import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
-import beaquaPreviewImg from '../assets/images/beaqua_system_preview.png';
+import beaquaPreviewImg from '../assets/images/beaqua_system_preview_1788883584017.jpg';
 import courseraCertImg from '../assets/images/sertifikatdata.png';
 import googleAiCertImg from '../assets/images/google_ai_cert.jpg';
 
@@ -44,6 +44,7 @@ export const PROFILE_DATA = {
   ],
   stats: [
     { label: 'Featured Projects', value: '5', sub: 'Web, Data & Research' },
+    { label: 'Awards & Honors', value: '1', sub: 'TOP 15 Finalist IPB' },
     { label: 'Certifications', value: '2', sub: 'Google AI & Data Analysis' },
   ],
   aboutText:
@@ -176,24 +177,22 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'beaqua-system',
-    title: 'BEAQUA SYSTEM: Integrasi Bioteknologi dan Platform Distribusi dalam Valorisasi Aquatic By-Products untuk Pengembangan Bahan Aktif Kosmetik Berkelanjutan',
+    title:
+      'BEAQUA SYSTEM: INTEGRASI BIOTEKNOLOGI DAN PLATFORM DISTRIBUSI DALAM VALORISASI AQUATIC BY-PRODUCTS UNTUK PENGEMBANGAN BAHAN AKTIF KOSMETIK BERKELANJUTAN',
     description:
-      'A biotechnology-driven circular economy platform transforming aquatic by-products into active cosmetic ingredients with digital traceability.',
+      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
     longDescription:
-      `Developed as a scientific paper project for the Aprotech Fair 2026 Essay Competition, a student-led competition organized by the Department of Aquatic Product Technology, IPB University, focusing on creativity, technological innovation, and the utilization of aquatic resources. The 2026 competition carried the theme “BlueTech Innovation: Exploring the Power of Aquatic By-Products.”
-Our project, BeAqua System, proposed an integrated biotechnology and distribution platform to valorize aquatic by-products into sustainable cosmetic active ingredients.
-
-My Contributions:
-- Designed the UI/UX prototype and platform flow.
-- Conducted national and international benchmarking to compare similar projects and identify BeAqua’s competitive advantages.
-- Contributed to system mapping, research, analysis, and scientific writing.`,
-    techStack: ['Lomba Essay', 'Circular Economy', 'Biotechnology', 'Traceability', 'UI/UX Flow'],
-    category: 'Lomba Essay',
+      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
+    techStack: ['UI/UX Flow', 'Fishbone Analysis', 'Biotechnology', 'Traceability', 'Circular Economy'],
+    category: 'UI/UX',
     image: beaquaPreviewImg,
-    status: 'Top 15 Penyisihan Essay',
+    status: 'TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition',
+    liveUrl: '#',
+    essayUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
     features: [
-      'Top 15 Penyisihan Essay',
-      'Aprotech Fair 2026 (IPB University)',
+      'Developing the UI/UX prototype and user flow architecture',
+      'Conducting national and international benchmarking of similar projects',
+      'Identifying BeAqua’s competitive advantages through research and analysis',
     ],
   },
 ];
@@ -202,16 +201,18 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: 'aprotech-fair-2026',
     title: 'Aprotech Fair 2026 Essay Competition',
-    rank: 'Ranked 6th – Top 15 Finalists',
+    rank: 'TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition',
     competition: 'Aprotech Fair 2026 Essay Competition',
     year: '2026',
     organizer: 'IPB University',
-    projectName: 'BeAqua System',
+    projectName:
+      'BEAQUA SYSTEM: INTEGRASI BIOTEKNOLOGI DAN PLATFORM DISTRIBUSI DALAM VALORISASI AQUATIC BY-PRODUCTS UNTUK PENGEMBANGAN BAHAN AKTIF KOSMETIK BERKELANJUTAN',
     description:
-      'Circular biotechnology concept transforming aquatic by-products into sustainable cosmetic active ingredients with digital traceability.',
+      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
     contributions: [
-      'UI/UX & User Flow: Structured end-to-end platform flow from raw-material data to bioconversion, QA, and distribution.',
-      'Fishbone Analysis: Mapped aquatic by-product challenges into an integrated circular economy roadmap.',
+      'UI/UX Prototype: Developing the UI/UX prototype and platform user flow architecture.',
+      'Benchmarking: Conducting national and international benchmarking of similar projects.',
+      'Research & Analysis: Identifying BeAqua’s competitive advantages through research and analysis.',
     ],
     tags: [
       'Biotechnology',
@@ -227,7 +228,7 @@ export const AWARDS_DATA: AwardItem[] = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'exp-0',
-    role: 'Backend Development Intern',
+    role: 'Backend Development',
     organization: 'Advanced Software Engineer Lab',
     period: 'July 2026 - Now',
     responsibilities: [

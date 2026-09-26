@@ -12,11 +12,11 @@ export interface Project {
   description: string;
   longDescription: string;
   techStack: string[];
-  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics' | 'Lomba Essay';
+  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics';
   image: string;
   status: string;
   githubUrl?: string;
-  liveUrl?: string;
+  liveUrl: string;
   features: string[];
   essayUrl?: string;
 }

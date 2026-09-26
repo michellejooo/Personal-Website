@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Clock } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -10,6 +10,7 @@ export const NAV_ITEMS = [
   { label: 'Profile', href: '#profile' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Awards', href: '#awards' },
   { label: 'Experience', href: '#experience' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
@@ -77,22 +78,21 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'py-3 backdrop-blur-md bg-white/95 dark:bg-[#0B0F17]/95 border-b border-gray-200/80 dark:border-slate-800 shadow-sm'
+          ? 'py-3 backdrop-blur-md bg-white/80 dark:bg-[#0F172A]/85 border-b border-gray-200/50 dark:border-slate-800/80 shadow-sm'
           : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Live Real-time Clock (replacing Joanna Portfolio as requested) */}
+        {/* Real-time Current Time */}
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-gray-100/90 dark:bg-slate-800/90 border border-gray-200/80 dark:border-slate-700/80 text-gray-900 dark:text-white font-mono text-xs sm:text-sm font-bold tracking-wider select-none shadow-2xs hover:border-[#7A0000]/50 dark:hover:border-red-500/50 transition-all shrink-0 group"
-          id="nav-brand-logo"
-          title="Waktu Real-time (WIB)"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100/90 dark:bg-slate-800/90 border border-gray-200/80 dark:border-slate-700/80 text-gray-900 dark:text-white font-mono text-xs sm:text-sm font-bold tracking-wider select-none shadow-2xs hover:border-[#7A0000]/50 dark:hover:border-red-500/50 transition-all shrink-0"
+          id="nav-current-time"
+          title="Waktu Sekarang (WIB)"
         >
-          <Clock className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0" />
-          <span className="font-mono text-xs sm:text-sm tracking-widest">{timeString || '--:--:--'}</span>
-          <span className="text-[10px] font-sans font-bold text-gray-500 dark:text-slate-400 uppercase tracking-normal">
+          <span className="tracking-widest">{timeString || '--:--:--'}</span>
+          <span className="text-[10px] font-sans font-bold text-[#7A0000] dark:text-red-400 uppercase tracking-normal">
             WIB
           </span>
         </a>
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Navigation Menu Overlay (Available for both mobile and desktop toggling) */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white dark:bg-[#0B0F17] border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
+        <div className="absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-3 border-b border-gray-100 dark:border-slate-800">
               {NAV_ITEMS.map((item) => {

@@ -15,7 +15,7 @@ import {
   Compass,
   FileText,
 } from 'lucide-react';
-import beaquaImg from '../assets/images/beaqua_system_preview.png';
+import beaquaImg from '../assets/images/beaqua_system_preview_1788883584017.jpg';
 
 interface EssayModalProps {
   isOpen: boolean;
@@ -79,7 +79,7 @@ export const EssayModal: React.FC<EssayModalProps> = ({
               <div>
                 <div className="flex items-center gap-2">
                   <span className="px-2.5 py-0.5 rounded-full bg-[#7A0000] text-white text-[10px] font-bold uppercase tracking-wider">
-                    Ranked 6th – Top 15 Finalist
+                    TOP 15 Finalist
                   </span>
                   <span className="text-xs text-gray-500 dark:text-slate-400 flex items-center gap-1 font-medium">
                     <Building2 className="w-3.5 h-3.5" />
@@ -87,7 +87,7 @@ export const EssayModal: React.FC<EssayModalProps> = ({
                   </span>
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mt-0.5">
-                  Aprotech Fair 2026 Essay Competition
+                  TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition
                 </h3>
               </div>
             </div>
@@ -111,11 +111,11 @@ export const EssayModal: React.FC<EssayModalProps> = ({
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Scientific & Innovation Essay Concept</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white leading-tight">
-                  BeAqua System: Transforming Aquatic By-Products into Sustainable Cosmetic Active Ingredients
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-gray-900 dark:text-white leading-tight">
+                  BEAQUA SYSTEM: INTEGRASI BIOTEKNOLOGI DAN PLATFORM DISTRIBUSI DALAM VALORISASI AQUATIC BY-PRODUCTS UNTUK PENGEMBANGAN BAHAN AKTIF KOSMETIK BERKELANJUTAN
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-300 leading-relaxed">
-                  A biotechnology-driven solution addressing industrial aquatic by-product waste through circular bioconversion, robust data traceability, and an integrated digital platform.
+                  As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.
                 </p>
 
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -168,13 +168,13 @@ export const EssayModal: React.FC<EssayModalProps> = ({
                     <div className="w-7 h-7 rounded-lg bg-[#7A0000]/10 dark:bg-red-500/20 flex items-center justify-center shrink-0">
                       <Layers className="w-4 h-4" />
                     </div>
-                    <span>UI/UX & Platform User Flow Architecture</span>
+                    <span>UI/UX Prototype & Platform User Flow</span>
                   </div>
                   <p className="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
-                    Contributed to the UI/UX and visual conceptualization of BeAqua System by structuring the platform’s user flow and visualizing key components, including raw-material data, traceability, bioconversion, quality assurance, distribution, and commercialization.
+                    Contributed to developing the UI/UX prototype and platform user flow architecture, structuring components across raw-material data, traceability, bioconversion, quality assurance, distribution, and commercialization.
                   </p>
                   <div className="pt-2 border-t border-gray-200/60 dark:border-slate-700/60 flex flex-wrap gap-1.5">
-                    {['Raw-Material Ingestion', 'Batch Traceability', 'Bioconversion QA', 'Commercialization Flow'].map((pill, i) => (
+                    {['UI/UX Prototype', 'User Flow Architecture', 'Bioconversion QA', 'Traceability'].map((pill, i) => (
                       <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-white dark:bg-slate-900 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 font-medium">
                         {pill}
                       </span>
@@ -188,13 +188,13 @@ export const EssayModal: React.FC<EssayModalProps> = ({
                     <div className="w-7 h-7 rounded-lg bg-[#7A0000]/10 dark:bg-red-500/20 flex items-center justify-center shrink-0">
                       <GitMerge className="w-4 h-4" />
                     </div>
-                    <span>Fishbone Analysis & Solution Framework</span>
+                    <span>Benchmarking & Competitive Analysis</span>
                   </div>
                   <p className="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
-                    Contributed to the fishbone analysis and solution framework, mapping challenges in aquatic by-product management into an integrated development roadmap focused on biotechnology, digital traceability, circular economy, and sustainable commercialization.
+                    Conducted national and international benchmarking of similar sustainable biotechnology projects, identifying BeAqua’s competitive advantages through comprehensive research and analysis.
                   </p>
                   <div className="pt-2 border-t border-gray-200/60 dark:border-slate-700/60 flex flex-wrap gap-1.5">
-                    {['Root-Cause Mapping', 'Cold-Chain Logistics', 'Extraction Yields', 'Integrated Roadmap'].map((pill, i) => (
+                    {['National Benchmarking', 'Global Benchmarking', 'Competitive Advantage', 'Market Research'].map((pill, i) => (
                       <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-white dark:bg-slate-900 text-gray-700 dark:text-slate-300 border border-gray-200 dark:border-slate-700 font-medium">
                         {pill}
                       </span>
@@ -251,10 +251,10 @@ export const EssayModal: React.FC<EssayModalProps> = ({
                 </div>
                 <div>
                   <h5 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
-                    National Finalist Distinction: Ranked 6th (Top 15)
+                    TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition
                   </h5>
                   <p className="text-[11px] text-gray-600 dark:text-slate-300">
-                    Aprotech Fair 2026 Essay Competition • Organized by IPB University
+                    Organized by IPB University • Circular Economy & Biotechnology Active Cosmetics
                   </p>
                 </div>
               </div>
