@@ -6,6 +6,28 @@ export interface Skill {
   description: string;
 }
 
+export interface SkillItem {
+  name: string;
+  iconName: string;
+  description: string;
+  level?: number;
+  highlight?: boolean;
+}
+
+export interface SkillSubGroup {
+  label: string;
+  skills: SkillItem[];
+}
+
+export interface SkillGroup {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  iconName: string;
+  subGroups: SkillSubGroup[];
+}
+
 export interface Project {
   id: string;
   title: string;

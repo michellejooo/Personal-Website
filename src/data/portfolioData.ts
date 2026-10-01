@@ -1,4 +1,4 @@
-import { Skill, Project, AwardItem, ExperienceItem, Certification, LanguageItem, EducationItem } from '../types';
+import { Skill, SkillGroup, Project, AwardItem, ExperienceItem, Certification, LanguageItem, EducationItem } from '../types';
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
 import profileAvatarFallbackImg from '../assets/images/joanna_avatar_1785572098877.jpg';
 import projectPortfolioImg from '../assets/images/website_profile.png';
@@ -63,34 +63,152 @@ export const PROFILE_DATA = {
 };
 
 export const SKILLS_DATA: Skill[] = [
-  // Technical & Data (including Scientific Paper & Proposal Writing)
-  { name: 'Scientific Paper', category: 'Technical & Data', level: 92, iconName: 'FileText', description: 'Academic drafting & research paper' },
-  { name: 'Proposal Writing', category: 'Technical & Data', level: 88, iconName: 'FileCheck', description: 'Project & grant proposal writing' },
-  { name: 'Data Analyst', category: 'Technical & Data', level: 85, iconName: 'BarChart2', description: 'Data cleaning & exploratory analysis' },
-  { name: 'Prompt Engineer', category: 'Technical & Data', level: 88, iconName: 'Bot', description: 'AI prompt design & optimization' },
-  { name: 'Python', category: 'Technical & Data', level: 85, iconName: 'Terminal', description: 'Logic, scripts & automation' },
-  { name: 'Pandas', category: 'Technical & Data', level: 85, iconName: 'Table', description: 'Dataframe manipulation & aggregation' },
-  { name: 'Matplotlib', category: 'Technical & Data', level: 82, iconName: 'PieChart', description: 'Data visualization & plotting' },
-  { name: 'NumPy', category: 'Technical & Data', level: 82, iconName: 'Binary', description: 'Numerical computing & arrays' },
-  { name: 'ERD Diagram', category: 'Technical & Data', level: 85, iconName: 'Database', description: 'Relational database schema design' },
-  { name: 'UX Researcher', category: 'Technical & Data', level: 85, iconName: 'Search', description: 'User research & usability testing' },
-  { name: 'Microsoft Excel', category: 'Technical & Data', level: 85, iconName: 'Sheet', description: 'Formulas, lookups & pivot tables' },
-  { name: 'Microsoft Word', category: 'Technical & Data', level: 90, iconName: 'FileText', description: 'Reports & documentation' },
+  // Data Science & Analytics
+  { name: 'NumPy', category: 'Data Science & Analytics', level: 88, iconName: 'Binary', description: 'Numerical computing & multidimensional arrays' },
+  { name: 'Pandas', category: 'Data Science & Analytics', level: 88, iconName: 'Table', description: 'Dataframe manipulation & aggregation' },
+  { name: 'Matplotlib', category: 'Data Science & Analytics', level: 84, iconName: 'PieChart', description: 'Data visualization & statistical plotting' },
+  { name: 'ERD Diagram', category: 'Data Science & Analytics', level: 86, iconName: 'Database', description: 'Relational database schema & entity relationship design' },
+  { name: 'Microsoft Excel', category: 'Data Science & Analytics', level: 86, iconName: 'Sheet', description: 'Formulas, lookups, pivot tables & data analysis' },
+  { name: 'Data Analyst', category: 'Data Science & Analytics', level: 88, iconName: 'BarChart2', description: 'Exploratory data analysis & business intelligence' },
+  { name: 'Data Cleaning', category: 'Data Science & Analytics', level: 86, iconName: 'FileCheck', description: 'Data preprocessing, handling nulls & normalization' },
 
-  // Communication & Leadership
-  { name: 'Communication', category: 'Communication & Leadership', level: 90, iconName: 'Share2', description: 'Verbal & written communication' },
-  { name: 'Public Speaking', category: 'Communication & Leadership', level: 85, iconName: 'MessageSquare', description: 'Presentations & academic speaking' },
-  { name: 'Leadership', category: 'Communication & Leadership', level: 85, iconName: 'Workflow', description: 'Team guidance & project coordination' },
-  { name: 'Team Work', category: 'Communication & Leadership', level: 90, iconName: 'UserCheck', description: 'Active collaboration & team execution' },
+  // Website & Back-End Development
+  { name: 'TypeScript', category: 'Website Development', level: 86, iconName: 'Code', description: 'Static typing, interfaces & scalable application architecture' },
+  { name: 'PostgreSQL', category: 'Website Development', level: 86, iconName: 'Database', description: 'Relational database management, ACID transactions & indexing' },
+  { name: 'ORM Prisma', category: 'Website Development', level: 85, iconName: 'Layers', description: 'Type-safe database ORM, schema modeling & automated migrations' },
+  { name: 'Node.js', category: 'Website Development', level: 84, iconName: 'Server', description: 'Event-driven JavaScript runtime & asynchronous backend logic' },
+  { name: 'Express.js', category: 'Website Development', level: 85, iconName: 'Network', description: 'RESTful API routing, middleware & backend server setup' },
+  { name: 'React', category: 'Website Development', level: 85, iconName: 'Component', description: 'Component architecture, state management & reactive UI' },
+  { name: 'Tailwind CSS', category: 'Website Development', level: 90, iconName: 'Palette', description: 'Utility-first responsive styling & modern design systems' },
+  { name: 'UX Researcher', category: 'Website Development', level: 85, iconName: 'Search', description: 'User flow conceptualization, usability testing & wireframes' },
 
-  // Languages & Fluency
-  { name: 'Indonesian (Native)', category: 'Languages & Fluency', level: 100, iconName: 'Globe', description: 'Native written & verbal fluency' },
-  { name: 'English (Fluent)', category: 'Languages & Fluency', level: 90, iconName: 'Globe', description: 'Professional & academic fluency' },
+  // Programming Languages
+  { name: 'Python', category: 'Programming Languages', level: 90, iconName: 'Terminal', description: 'Core programming for data science, scripting & AI automation' },
+  { name: 'Go', category: 'Programming Languages', level: 80, iconName: 'Cpu', description: 'High-concurrency systems, fast compiled execution & microservices' },
+  { name: 'SQL', category: 'Programming Languages', level: 86, iconName: 'Database', description: 'Relational database querying, joins & aggregations' },
 
-  // Professional & Creative
-  { name: 'Problem Solving', category: 'Professional & Creative', level: 88, iconName: 'Brain', description: 'Analytical thinking & solutions' },
-  { name: 'Design Presentation', category: 'Professional & Creative', level: 85, iconName: 'Palette', description: 'Engaging pitch decks & slide design' },
-  { name: 'Keyboardist', category: 'Professional & Creative', level: 88, iconName: 'Activity', description: 'Musical performance & keyboard harmony' },
+  // AI & Prompt Engineering
+  { name: 'Prompt Engineer', category: 'AI & Prompt Engineering', level: 90, iconName: 'Bot', description: 'Generative AI system prompts, few-shot tuning & reasoning flows' },
+
+  // Others & Soft Skills
+  { name: 'Leadership', category: 'Others & Soft Skills', level: 88, iconName: 'Workflow', description: 'Team guidance, project initiative & milestone coordination' },
+  { name: 'Team Work', category: 'Others & Soft Skills', level: 90, iconName: 'UserCheck', description: 'Active collaboration & cross-functional synergy' },
+  { name: 'Communication', category: 'Others & Soft Skills', level: 90, iconName: 'Share2', description: 'Clear technical verbal & written communication' },
+  { name: 'Public Speaking', category: 'Others & Soft Skills', level: 85, iconName: 'MessageSquare', description: 'Presentations, academic pitching & seminar facilitation' },
+  { name: 'Problem Solving', category: 'Others & Soft Skills', level: 88, iconName: 'Brain', description: 'Analytical diagnosis & structured solution frameworks' },
+  { name: 'Scientific Paper', category: 'Others & Soft Skills', level: 92, iconName: 'FileText', description: 'Academic paper drafting, thesis & national essay writing' },
+  { name: 'Proposal Writing', category: 'Others & Soft Skills', level: 88, iconName: 'FileCheck', description: 'Project grant writing, funding & event proposals' },
+  { name: 'Microsoft Word', category: 'Others & Soft Skills', level: 90, iconName: 'FileText', description: 'Professional documentation, papers & structured reporting' },
+  { name: 'Keyboardist', category: 'Others & Soft Skills', level: 88, iconName: 'Activity', description: 'Musical harmony, performance & worship keyboard team' },
+];
+
+export const SKILL_GROUPS_DATA: SkillGroup[] = [
+  {
+    id: 'data-science',
+    title: 'Data Science & Analyst',
+    subtitle: 'Data analytics, statistical modeling, database design & exploratory research',
+    badge: 'Data Science',
+    iconName: 'BarChart2',
+    subGroups: [
+      {
+        label: 'Tools & Libraries',
+        skills: [
+          { name: 'NumPy', iconName: 'Binary', description: 'Numerical computing, matrix operations & array processing' },
+          { name: 'Pandas', iconName: 'Table', description: 'Dataframe manipulation, data cleaning & aggregation' },
+          { name: 'Matplotlib', iconName: 'PieChart', description: 'Data visualization, charting & statistical distribution plotting' },
+          { name: 'ERD Diagram', iconName: 'Database', description: 'Relational database schema design & entity-relationship modeling' },
+          { name: 'Microsoft Excel', iconName: 'Sheet', description: 'Advanced formulas, lookup tables, pivot tables & analytics' },
+        ],
+      },
+      {
+        label: 'Languages & Core Analytics',
+        skills: [
+          { name: 'Python', iconName: 'Terminal', description: 'Data science scripting, Pandas/NumPy automation' },
+          { name: 'SQL', iconName: 'Database', description: 'Structured querying, joins, grouping & aggregations' },
+          { name: 'Data Analyst', iconName: 'BarChart2', description: 'Exploratory data analysis (EDA) & business intelligence' },
+          { name: 'Data Cleaning', iconName: 'FileCheck', description: 'Dataset preprocessing, outlier handling & pipelines' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'website-development',
+    title: 'Website Development',
+    subtitle: 'Full-stack web architecture with heavy focus on modern back-end engineering',
+    badge: 'Back-End & Web',
+    iconName: 'Server',
+    subGroups: [
+      {
+        label: 'Back-End Development',
+        skills: [
+          { name: 'TypeScript', iconName: 'Code', description: 'Strict type safety, object modeling & scalable server code', highlight: true },
+          { name: 'PostgreSQL', iconName: 'Database', description: 'ACID-compliant relational database, indexing & relational models', highlight: true },
+          { name: 'ORM Prisma', iconName: 'Layers', description: 'Type-safe database ORM, data migrations & schema generation', highlight: true },
+          { name: 'Node.js', iconName: 'Server', description: 'Asynchronous event-driven server runtime' },
+          { name: 'Express.js', iconName: 'Network', description: 'RESTful API routing, controllers & middleware architecture' },
+        ],
+      },
+      {
+        label: 'Front-End & UI/UX',
+        skills: [
+          { name: 'React', iconName: 'Component', description: 'Modern reactive component hierarchy & custom hooks' },
+          { name: 'Tailwind CSS', iconName: 'Palette', description: 'Utility-first responsive layouts & design systems' },
+          { name: 'UX Researcher', iconName: 'Search', description: 'User flow structuring, usability testing & visual prototypes' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'programming-languages',
+    title: 'Programming Languages',
+    subtitle: 'Core programming languages powering backend services, algorithms & data systems',
+    badge: 'Languages',
+    iconName: 'Terminal',
+    subGroups: [
+      {
+        label: 'Core Languages',
+        skills: [
+          { name: 'Python', iconName: 'Terminal', description: 'General-purpose programming, data analytics, AI & automation' },
+          { name: 'Go', iconName: 'Cpu', description: 'High-performance backend systems, concurrency & robust tooling', highlight: true },
+          { name: 'TypeScript', iconName: 'Code', description: 'Static typing for modern web and backend server architectures', highlight: true },
+          { name: 'SQL', iconName: 'Database', description: 'Relational database query language and schema operations' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'others-softskills',
+    title: 'Others & Soft Skills',
+    subtitle: 'Interpersonal leadership, academic research, formal writing & creative abilities',
+    badge: 'Soft Skills & Creative',
+    iconName: 'Sparkles',
+    subGroups: [
+      {
+        label: 'Leadership & Soft Skills',
+        skills: [
+          { name: 'Leadership', iconName: 'Workflow', description: 'Organization team guidance, project planning & delegation', highlight: true },
+          { name: 'Team Work', iconName: 'UserCheck', description: 'Collaborative problem solving & cross-functional synergy' },
+          { name: 'Communication', iconName: 'Share2', description: 'Clear technical and interpersonal verbal/written articulation' },
+          { name: 'Public Speaking', iconName: 'MessageSquare', description: 'Presentations, jury pitching & academic seminar hosting' },
+          { name: 'Problem Solving', iconName: 'Brain', description: 'Structured root cause mapping & pragmatic engineering solutions' },
+        ],
+      },
+      {
+        label: 'Academic Writing & Documentation',
+        skills: [
+          { name: 'Scientific Paper', iconName: 'FileText', description: 'Academic paper drafting, thesis & national essay competitions', highlight: true },
+          { name: 'Proposal Writing', iconName: 'FileCheck', description: 'Formal grant proposals, project budgeting & event documentation' },
+          { name: 'Microsoft Word', iconName: 'FileText', description: 'Academic formatting, structured reports & official letters' },
+        ],
+      },
+      {
+        label: 'Creative & Musical',
+        skills: [
+          { name: 'Keyboardist', iconName: 'Activity', description: 'Musical keyboard harmony, live band performance & worship team', highlight: true },
+        ],
+      },
+    ],
+  },
 ];
 
 export const PROJECTS_DATA: Project[] = [

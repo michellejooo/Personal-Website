@@ -4,77 +4,28 @@ import { EXPERIENCE_DATA } from '../data/portfolioData';
 import { ExperienceItem } from '../types';
 import { ExperiencePhotoModal } from './ExperiencePhotoModal';
 import { ExperienceCardCarousel } from './ExperienceCardCarousel';
-import { Briefcase, Calendar, Building2, CheckCircle2, Eye, Sparkles } from 'lucide-react';
+import { Briefcase, Calendar, Building2, CheckCircle2, Eye } from 'lucide-react';
 
 const STORAGE_KEY = 'joanna_experience_custom_photos';
 
 export const ExperienceSection: React.FC = () => {
   const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number>(0);
-  const [customPhotos, setCustomPhotos] = useState<Record<string, string[]>>({});
 
-  // Load custom photos from localStorage on mount (supporting legacy single-string or array format)
+  // Clear any cached photos on mount to ensure removed photos do not persist
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        const normalized: Record<string, string[]> = {};
-        for (const [key, val] of Object.entries(parsed)) {
-          if (Array.isArray(val)) {
-            normalized[key] = val as string[];
-          } else if (typeof val === 'string') {
-            normalized[key] = [val];
-          }
-        }
-        setCustomPhotos(normalized);
-      }
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
-      // Ignore JSON parse errors
+      // Ignore
     }
   }, []);
 
-  const handleUploadPhoto = (experienceId: string, photoUrl: string) => {
-    setCustomPhotos((prev) => {
-      const existing = prev[experienceId] || [];
-      const updatedList = [photoUrl, ...existing];
-      const updated = { ...prev, [experienceId]: updatedList };
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-      } catch {
-        // Handle storage quota exceeded gracefully
-      }
-      return updated;
-    });
-  };
-
-  const handleResetPhoto = (experienceId: string) => {
-    setCustomPhotos((prev) => {
-      const updated = { ...prev };
-      delete updated[experienceId];
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-      } catch {
-        // Ignore errors
-      }
-      return updated;
-    });
-  };
-
-  // Helper to compile all photos for an experience (custom photos first, then defaults)
+  // Helper to compile all photos for an experience
   const getExperienceImages = (item: ExperienceItem): string[] => {
-    const userImgs = customPhotos[item.id] || [];
-    const defaultImgs = item.images && item.images.length > 0
+    return item.images && item.images.length > 0
       ? item.images
       : (item.image ? [item.image] : []);
-
-    const combined = [...userImgs];
-    for (const img of defaultImgs) {
-      if (!combined.includes(img)) {
-        combined.push(img);
-      }
-    }
-    return combined;
   };
 
   const handleOpenModal = (item: ExperienceItem, initialIdx: number = 0) => {
@@ -108,7 +59,6 @@ export const ExperienceSection: React.FC = () => {
             {EXPERIENCE_DATA.map((item, idx) => {
               const isEven = idx % 2 === 0;
               const allItemImages = getExperienceImages(item);
-              const hasCustomPhoto = Boolean(customPhotos[item.id] && customPhotos[item.id].length > 0);
 
               return (
                 <motion.div
@@ -163,7 +113,6 @@ export const ExperienceSection: React.FC = () => {
                           images={allItemImages}
                           caption={item.imageCaption}
                           role={item.role}
-                          isCustomPhoto={hasCustomPhoto}
                           onOpenModal={(clickedIdx) => handleOpenModal(item, clickedIdx)}
                           experienceId={item.id}
                         />
@@ -203,20 +152,13 @@ export const ExperienceSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Experience Photo Lightbox Modal with 3s auto slide & Next/Prev buttons */}
+      {/* Experience Photo Lightbox Modal */}
       <ExperiencePhotoModal
         isOpen={Boolean(selectedExperience)}
         onClose={() => setSelectedExperience(null)}
         experience={selectedExperience}
         images={selectedExperience ? getExperienceImages(selectedExperience) : []}
         initialIndex={selectedPhotoIndex}
-        isCustomPhoto={
-          selectedExperience
-            ? Boolean(customPhotos[selectedExperience.id] && customPhotos[selectedExperience.id].length > 0)
-            : false
-        }
-        onUploadPhoto={handleUploadPhoto}
-        onResetPhoto={handleResetPhoto}
       />
     </section>
   );

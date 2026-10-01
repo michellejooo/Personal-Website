@@ -69,32 +69,44 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
         </div>
       )}
 
-      {/* Aspect Ratio Container (16:9) */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden">
+      {/* Aspect Ratio Container (16:9 on mobile, 16:10 on sm+) */}
+      <div className="relative aspect-[16/9] sm:aspect-[16/10] w-full overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentPhoto}
             src={currentPhoto}
-            alt={role}
+            alt={caption || role}
             referrerPolicy="no-referrer"
-            initial={{ opacity: 0.6 }}
+            loading="eager"
+            decoding="async"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.src.includes('staff_ahli_akademik.jpg')) {
+                target.src = '/images/staff_ahli_akademik.jpg';
+              }
+            }}
+            initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0.6 }}
-            transition={{ duration: 0.35 }}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
+            exit={{ opacity: 0.8 }}
+            transition={{ duration: 0.25 }}
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover/photo:scale-105"
           />
         </AnimatePresence>
 
         {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10 opacity-85 group-hover/photo:opacity-95 transition-opacity flex flex-col justify-between p-2.5 sm:p-3 pointer-events-none">
-          {/* Top header row inside photo */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10 opacity-90 group-hover/photo:opacity-95 transition-opacity flex flex-col justify-between p-2.5 sm:p-3 pointer-events-none">
+          {/* Top header row inside photo: Official badge & counter */}
           <div className="flex items-center justify-between">
-            {images.length > 1 ? (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-[#7A0000]/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/20 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Dokumentasi Resmi</span>
+            </span>
+
+            {images.length > 1 && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/10">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>{currentIndex + 1} / {images.length}</span>
               </span>
-            ) : <span />}
+            )}
           </div>
 
           {/* Bottom caption and View badge */}

@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   X,
   Calendar,
   Building2,
-  Upload,
-  RotateCcw,
+  Eye,
   Image as ImageIcon,
   ChevronLeft,
   ChevronRight,
@@ -29,13 +28,9 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
   experience,
   images = [],
   initialIndex = 0,
-  onUploadPhoto,
-  onResetPhoto,
-  isCustomPhoto = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Sync initialIndex when modal opens or experience changes
   useEffect(() => {
@@ -102,20 +97,6 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
   const handlePrev = () => {
     if (images.length <= 1) return;
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && onUploadPhoto) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === 'string') {
-          onUploadPhoto(experience.id, reader.result);
-          setCurrentIndex(0);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   const currentPhoto = images[currentIndex] || '';
@@ -193,11 +174,18 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                       src={currentPhoto}
                       alt={experience.role}
                       referrerPolicy="no-referrer"
+                      loading="eager"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('staff_ahli_akademik.jpg')) {
+                          target.src = '/images/staff_ahli_akademik.jpg';
+                        }
+                      }}
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full h-auto max-h-[50vh] sm:max-h-[56vh] object-contain rounded-xl"
+                      transition={{ duration: 0.25 }}
+                      className="w-full h-auto max-h-[50vh] sm:max-h-[60vh] object-contain rounded-xl"
                     />
                   ) : (
                     <div className="py-16 text-center text-gray-400">
@@ -288,36 +276,25 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                 </p>
               </div>
 
-              {/* Action Buttons: Next Button, Upload photo, reset, and close */}
+              {/* Action Buttons: Status Badge, Full view, Next, and Close */}
               <div className="pt-2 border-t border-gray-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleFileChange}
-                    accept="image/*"
-                    className="hidden"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-700 dark:text-slate-200 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
-                    id={`upload-photo-btn-${experience.id}`}
-                  >
-                    <Upload className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400" />
-                    <span>Unggah / Tambah Foto</span>
-                  </button>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200/60 dark:border-red-900/40 text-[#7A0000] dark:text-red-300 text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Dokumentasi Resmi Terverifikasi</span>
+                  </div>
 
-                  {isCustomPhoto && onResetPhoto && (
-                    <button
-                      type="button"
-                      onClick={() => onResetPhoto(experience.id)}
-                      className="px-3 py-2 rounded-xl bg-red-50 hover:bg-red-100 dark:bg-red-950/50 dark:hover:bg-red-900/50 text-[#7A0000] dark:text-red-300 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
-                      title="Kembalikan ke foto dokumentasi awal"
+                  {currentPhoto && (
+                    <a
+                      href={currentPhoto}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-700 dark:text-slate-200 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
+                      title="Buka foto resolusi penuh di tab baru"
                     >
-                      <RotateCcw className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">Reset</span>
-                    </button>
+                      <Eye className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400" />
+                      <span className="hidden sm:inline">Buka Resolusi Penuh</span>
+                    </a>
                   )}
                 </div>
 
