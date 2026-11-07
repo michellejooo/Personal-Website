@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-
-interface NavbarProps {
-  darkMode: boolean;
-  setDarkMode: (val: boolean) => void;
-}
+import { Menu, X } from 'lucide-react';
 
 export const NAV_ITEMS = [
   { label: 'Profile', href: '#profile' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Awards', href: '#awards' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Certifications', href: '#certifications' },
+  { label: 'More', href: '#more' },
   { label: 'Contact', href: '#contact' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({
-  darkMode,
-  setDarkMode,
-}) => {
+export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('profile');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -78,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'py-3 backdrop-blur-md bg-white/80 dark:bg-[#0F172A]/85 border-b border-gray-200/50 dark:border-slate-800/80 shadow-sm'
+          ? 'py-3 backdrop-blur-md bg-[#e2c28e]/95 border-b border-[#3D2314]/20 shadow-xs'
           : 'py-5 bg-transparent'
       }`}
     >
@@ -87,18 +78,18 @@ export const Navbar: React.FC<NavbarProps> = ({
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100/90 dark:bg-slate-800/90 border border-gray-200/80 dark:border-slate-700/80 text-gray-900 dark:text-white font-mono text-xs sm:text-sm font-bold tracking-wider select-none shadow-2xs hover:border-[#7A0000]/50 dark:hover:border-red-500/50 transition-all shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#ebd7bc] border border-[#7A0000]/20 text-[#7A0000] text-xs sm:text-sm font-bold tracking-wider select-none shadow-2xs hover:border-[#7A0000]/50 transition-all shrink-0"
           id="nav-current-time"
           title="Waktu Sekarang (WIB)"
         >
           <span className="tracking-widest">{timeString || '--:--:--'}</span>
-          <span className="text-[10px] font-sans font-bold text-[#7A0000] dark:text-red-400 uppercase tracking-normal">
+          <span className="text-[10px] font-extrabold text-[#7A0000] uppercase tracking-normal">
             WIB
           </span>
         </a>
 
-        {/* Navigation Links - Desktop Only (Hidden on mobile since hamburger menu is used) */}
-        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 bg-gray-100/90 dark:bg-slate-800/90 p-1 sm:p-1.5 rounded-full border border-gray-200/80 dark:border-slate-700/70 backdrop-blur-md shadow-xs">
+        {/* Navigation Links - Desktop Only */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 bg-[#ebd7bc] p-1 sm:p-1.5 rounded-full border border-[#7A0000]/20 backdrop-blur-md shadow-xs">
           {NAV_ITEMS.map((item) => {
             const sectionId = item.href.substring(1);
             const isActive = activeSection === sectionId;
@@ -109,8 +100,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 shrink-0 ${
                   isActive
-                    ? 'bg-[#7A0000] text-white shadow-sm shadow-[#7A0000]/25'
-                    : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-slate-700/50'
+                    ? 'bg-[#7A0000] text-white shadow-xs shadow-[#7A0000]/30'
+                    : 'text-[#7A0000]/80 hover:text-[#7A0000] hover:bg-[#f4ebdb]'
                 }`}
                 id={`nav-link-${sectionId}`}
               >
@@ -121,39 +112,28 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-1.5 sm:p-2 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700"
-            aria-label="Toggle dark mode"
-            id="nav-theme-toggle"
-          >
-            {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-[#7A0000]" />}
-          </button>
-
-          {/* Menu Toggle (Garis 3) - Visible across all screens (mobile & desktop) */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Menu Toggle (Garis 3) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex p-1.5 sm:p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors border border-gray-200 dark:border-slate-700 items-center justify-center min-w-[34px] min-h-[34px] sm:min-w-[42px] sm:min-h-[42px] shrink-0 active:scale-95 shadow-xs"
+            className="flex p-1.5 sm:p-2.5 rounded-xl bg-[#ebd7bc] text-[#7A0000] hover:bg-[#f4ebdb] transition-colors border border-[#7A0000]/20 items-center justify-center min-w-[34px] min-h-[34px] sm:min-w-[40px] sm:min-h-[40px] shrink-0 active:scale-95 shadow-xs cursor-pointer"
             aria-label="Toggle navigation menu"
             id="nav-menu-toggle"
           >
             {mobileMenuOpen ? (
-              <X className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5] text-gray-900 dark:text-white" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             ) : (
-              <Menu className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5] text-gray-900 dark:text-white" />
+              <Menu className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             )}
           </button>
         </div>
       </div>
 
-
-      {/* Navigation Menu Overlay (Available for both mobile and desktop toggling) */}
+      {/* Navigation Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl border-b border-gray-200 dark:border-slate-800 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
+        <div className="absolute top-full left-0 right-0 bg-[#ebd7bc]/98 backdrop-blur-xl border-b border-[#7A0000]/20 shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
           <div className="max-w-7xl mx-auto w-full">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-3 border-b border-gray-100 dark:border-slate-800">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-1">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.substring(1);
                 const isActive = activeSection === sectionId;
@@ -164,8 +144,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`px-3 py-2.5 rounded-xl text-xs font-bold text-center transition-all ${
                       isActive
-                        ? 'bg-[#7A0000] text-white shadow-sm'
-                        : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800'
+                        ? 'bg-[#7A0000] text-white shadow-xs'
+                        : 'text-[#7A0000]/80 hover:bg-[#f4ebdb] hover:text-[#7A0000]'
                     }`}
                     id={`menu-overlay-nav-link-${sectionId}`}
                   >
@@ -173,28 +153,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </a>
                 );
               })}
-            </div>
-
-            {/* Quick Theme Switch Row */}
-            <div className="pt-3 flex items-center justify-between">
-              <span className="text-xs font-semibold text-gray-600 dark:text-slate-300">Appearance Mode</span>
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-700 text-xs font-semibold"
-                id="menu-overlay-theme-toggle"
-              >
-                {darkMode ? (
-                  <>
-                    <Sun className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-3.5 h-3.5 text-[#7A0000]" />
-                    <span>Dark Mode</span>
-                  </>
-                )}
-              </button>
             </div>
           </div>
         </div>

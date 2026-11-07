@@ -49,7 +49,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
 
   return (
     <div
-      className="relative mt-3 mb-3 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer group/photo border border-gray-100 dark:border-slate-700/60 bg-gray-100 dark:bg-slate-900 shadow-xs select-none"
+      className="relative mt-3 mb-3 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer group/photo border border-[#7A0000]/20 bg-[#ebd7bc] shadow-xs select-none"
       id={`experience-photo-card-${experienceId}`}
       onClick={() => onOpenModal(currentIndex)}
       onMouseEnter={() => setIsHovered(true)}
@@ -64,7 +64,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 5, ease: 'linear' }}
-            className="h-full bg-gradient-to-r from-red-500 to-[#7A0000]"
+            className="h-full bg-gradient-to-r from-[#7A0000] via-[#8C5E3C] to-[#5C0612]"
           />
         </div>
       )}
@@ -156,7 +156,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
                   setCurrentIndex(i);
                 }}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                  i === currentIndex ? 'w-4 bg-[#7A0000] dark:bg-red-400' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  i === currentIndex ? 'w-4 bg-[#7A0000]' : 'w-1.5 bg-white/50 hover:bg-white/80'
                 }`}
                 title={`Foto ${i + 1}`}
               />

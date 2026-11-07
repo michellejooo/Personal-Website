@@ -2,10 +2,8 @@ import { Skill, SkillGroup, Project, AwardItem, ExperienceItem, Certification, L
 import profileAvatarImg from '../assets/images/regenerated_image_1786096085071.jpg';
 import profileAvatarFallbackImg from '../assets/images/joanna_avatar_1785572098877.jpg';
 import projectPortfolioImg from '../assets/images/website_profile.png';
-import projectTravelyukImg from '../assets/images/project_travelyuk_1785572114052.jpg';
-import projectEchoImg from '../assets/images/project_echo_1785572129795.jpg';
-import projectDataAnalysisImg from '../assets/images/project_data_analysis_1785683601973.jpg';
-import beaquaPreviewImg from '../assets/images/beaqua_system_preview_1788883584017.jpg';
+import projectCaresImg from '../assets/images/cares_platform_preview_1793747514529.jpg';
+import caresPosterImg from '../assets/images/poster_cares.03.27.jpeg';
 import courseraCertImg from '../assets/images/sertifikatdata.png';
 import googleAiCertImg from '../assets/images/google_ai_cert.jpg';
 
@@ -43,8 +41,7 @@ export const PROFILE_DATA = {
     'Data Analyst',
   ],
   stats: [
-    { label: 'Featured Projects', value: '5', sub: 'Web, Data & Research' },
-    { label: 'Awards & Honors', value: '1', sub: 'TOP 15 Finalist IPB' },
+    { label: 'Featured Projects', value: '2', sub: 'Web & Full Stack' },
     { label: 'Certifications', value: '2', sub: 'Google AI & Data Analysis' },
   ],
   aboutText:
@@ -234,123 +231,55 @@ export const PROJECTS_DATA: Project[] = [
     ],
   },
   {
-    id: 'travelyuk',
-    title: 'Travelyuk',
+    id: 'cares',
+    title: 'CARES – Campus Facility Management Platform',
     description:
-      'A full-stack travel booking platform inspired by modern travel applications. Users can search destinations, book tickets, manage reservations, and explore travel promotions.',
+      'A digital campus facility management platform developed at the Advanced Software Engineer Laboratory to improve transparency, accountability, and efficiency in campus facility reporting at Telkom University. Allows users to report damaged facilities, upload supporting photos, track report progress in real time, and enables administrators to monitor facility conditions through an analytical dashboard.',
     longDescription:
-      'Travelyuk simplifies travel planning through real-time seat availability searches, automated ticket generation, interactive maps, and PostgreSQL reservation management.',
-    techStack: ['Next.js', 'Express.js', 'PostgreSQL', 'Tailwind CSS'],
+      'Developed as a flagship laboratory project within the Advanced Software Engineer Laboratory. As a Backend Developer, I was responsible for developing the server-side functionality and RESTful APIs to support the platform. My contributions included implementing backend logic, managing database operations, developing authentication and authorization mechanisms, handling facility report management, implementing data validation and file uploads, and ensuring smooth communication between the frontend and backend systems.',
+    role: 'Backend Developer',
+    organization: 'Advanced Software Engineer Laboratory',
+    techStack: ['Node.js', 'TypeScript', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'JWT', 'Zod'],
     category: 'Full Stack',
-    image: projectTravelyukImg,
-    status: 'Completed',
-    githubUrl: 'https://github.com/joanna-dev/travelyuk-booking',
+    image: projectCaresImg,
+    posterImage: caresPosterImg,
+    status: 'Active / Completed',
+    githubUrl: 'https://github.com/Cares-Tel-U',
     liveUrl: '#',
     features: [
-      'Destination search with dynamic filters & pricing',
-      'Real-time seat selection & booking flow',
-      'Express.js RESTful API & PostgreSQL relational DB',
-      'Booking history & downloadable PDF boarding passes',
+      'Advanced Software Engineer Lab: Core flagship laboratory project for campus facility management',
+      'Facility Damage Reporting with photo uploads and real-time status tracking',
+      'Server-side functionality and RESTful APIs with Node.js & Express.js',
+      'Database operations and data modeling with PostgreSQL & Prisma ORM',
+      'Robust authentication, authorization (JWT), and schema validation (Zod)',
+      'Analytical admin dashboard integration for facility condition monitoring',
     ],
-  },
-  {
-    id: 'echo',
-    title: 'Echo',
-    description:
-      'A modern music streaming platform inspired by Spotify and Apple Music, featuring playlist management, music discovery, and a responsive user interface.',
-    longDescription:
-      'Echo is a high-fidelity web music streaming player with custom audio spectrum visualizations, personalized playlist creation, and seamless audio playback control.',
-    techStack: ['Next.js', 'React', 'Express.js', 'PostgreSQL', 'Tailwind CSS'],
-    category: 'Full Stack',
-    image: projectEchoImg,
-    status: 'Featured',
-    githubUrl: 'https://github.com/joanna-dev/echo-music-streaming',
-    liveUrl: '#',
-    features: [
-      'Web Audio API player with play/pause/seek controls',
-      'Interactive canvas audio waveform visualizer',
-      'Custom playlist manager & favorite song bookmarks',
-      'Express & PostgreSQL backend for track metadata',
-    ],
-  },
-  {
-    id: 'data-analysis',
-    title: 'Data Analysis & Insights Dashboard',
-    description:
-      'An interactive data analytics and visualization application for exploratory data analysis, dataset cleaning, statistical KPI tracking, and automated reporting.',
-    longDescription:
-      'A comprehensive data analytics platform leveraging Python, Pandas, SQL, and interactive charts. Enables automated dataset cleaning, KPI metrics monitoring, cohort visualization, and custom analytical report exports.',
-    techStack: ['Python', 'Pandas', 'SQL', 'Power BI', 'React', 'Recharts'],
-    category: 'Data Analytics',
-    image: projectDataAnalysisImg,
-    status: 'Live App',
-    githubUrl: 'https://github.com/joanna-dev/data-analysis-insights',
-    liveUrl: 'https://ai.studio/apps/2843d2da-a43f-4f89-84b7-864f84ee6499',
-    features: [
-      'Exploratory Data Analysis (EDA) & automated data cleaning pipelines',
-      'Interactive KPI analytics dashboard with dynamic date & trend filters',
-      'Exportable statistical summaries, correlation matrices & distribution charts',
-      'Seamless integration with Python data processing engines & SQL queries',
-    ],
-  },
-  {
-    id: 'beaqua-system',
-    title:
-      'BEAQUA SYSTEM: INTEGRASI BIOTEKNOLOGI DAN PLATFORM DISTRIBUSI DALAM VALORISASI AQUATIC BY-PRODUCTS UNTUK PENGEMBANGAN BAHAN AKTIF KOSMETIK BERKELANJUTAN',
-    description:
-      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
-    longDescription:
-      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
-    techStack: ['UI/UX Flow', 'Fishbone Analysis', 'Biotechnology', 'Traceability', 'Circular Economy'],
-    category: 'UI/UX',
-    image: beaquaPreviewImg,
-    status: 'TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition',
-    liveUrl: '#',
-    essayUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
-    features: [
-      'Developing the UI/UX prototype and user flow architecture',
-      'Conducting national and international benchmarking of similar projects',
-      'Identifying BeAqua’s competitive advantages through research and analysis',
-    ],
-  },
-];
-
-export const AWARDS_DATA: AwardItem[] = [
-  {
-    id: 'aprotech-fair-2026',
-    title: 'Aprotech Fair 2026 Essay Competition',
-    rank: 'TOP 15 Finalist ESSAY APROTECH.FAIR IPB Competition',
-    competition: 'Aprotech Fair 2026 Essay Competition',
-    year: '2026',
-    organizer: 'IPB University',
-    projectName:
-      'BEAQUA SYSTEM: INTEGRASI BIOTEKNOLOGI DAN PLATFORM DISTRIBUSI DALAM VALORISASI AQUATIC BY-PRODUCTS UNTUK PENGEMBANGAN BAHAN AKTIF KOSMETIK BERKELANJUTAN',
-    description:
-      'As part of the BeAqua System team, I contributed to developing the UI/UX prototype, conducting national and international benchmarking of similar projects, and identifying BeAqua’s competitive advantages through research and analysis.',
-    contributions: [
-      'UI/UX Prototype: Developing the UI/UX prototype and platform user flow architecture.',
-      'Benchmarking: Conducting national and international benchmarking of similar projects.',
-      'Research & Analysis: Identifying BeAqua’s competitive advantages through research and analysis.',
-    ],
-    tags: [
-      'Biotechnology',
-      'UI/UX Flow',
-      'Fishbone Analysis',
-      'Circular Economy',
-    ],
-    essayUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
-    image: beaquaPreviewImg,
   },
 ];
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
+  {
+    id: 'exp-lo-kaspersky',
+    role: 'Liaison Officer',
+    organization: 'Telkom University x Kaspersky',
+    period: '2026',
+    description:
+      'Served as a Liaison Officer for HackNusa Hackathon , acting as a communication bridge between participants and the organizing committee. Guided participants throughout the competition, communicated updates, schedules, and important information, responded to inquiries, coordinated participant needs, and assisted in resolving issues to ensure a smooth and organized hackathon experience. (In collaboration with @kaspersky)',
+    responsibilities: [
+      'Served as a Liaison Officer for HackNusa Hackathon, acting as a communication bridge between participants and the organizing committee',
+      'Guided participants throughout the competition, communicated updates, schedules, and important information',
+      'Responded to inquiries, coordinated participant needs, and assisted in resolving issues to ensure a smooth and organized hackathon experience',
+      'Collaborated with Telkom University and Kaspersky committees to ensure seamless event coordination',
+    ],
+    skillsUsed: ['Liaison Officer', 'Event Coordination', 'Communication', 'Problem Solving', 'Hackathon'],
+  },
   {
     id: 'exp-0',
     role: 'Backend Development',
     organization: 'Advanced Software Engineer Lab',
     period: 'July 2026 - Now',
     responsibilities: [
-      'Engineered backend RESTful API services and database models for laboratory projects using Node.js, Express, and PostgreSQL',
+      'Engineered backend RESTful API services and database models for laboratory projects (including the CARES Campus Facility Management Platform) using Node.js, Express, and PostgreSQL',
       'Researched backend software architecture standards, microservices design patterns, and database query optimization',
       'Collaborated with lab members on API testing, documentation, and code reviews in an agile research environment',
     ],
@@ -370,8 +299,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 'exp-2',
-    role: 'Secretary',
-    organization: 'Information Technology Student Seminar',
+    role: 'Secretary and Treasurer',
+    organization: 'Seminar Mahasiswa Teknologi Informasi',
     period: 'May 2026 - Present',
     responsibilities: [
       'Managed formal documentation, meeting minutes, and event proposals',
@@ -383,7 +312,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'exp-3',
     role: 'Keyboard Player',
-    organization: 'Christian Fellowship (PMK Telkom University)',
+    organization: 'PMK Telkom University',
     period: 'May 2026 - Present',
     responsibilities: [
       'Worship keyboard player for weekly services and campus fellowship events',
@@ -397,8 +326,6 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: 'Member of Club Search : Essay Division',
     organization: 'SEARCH TELKOM UNIVERSITY',
     period: 'Dec 2025 - Present',
-    description:
-      'A platform for students who want to express critical and solution-oriented ideas through writing. The main focus is on training research skills and constructing strong, systematic arguments',
     responsibilities: [
       'Learn techniques for Scientific Paper and popular essay writing',
       'Conduct data research and problem validation for writing materials',
@@ -412,8 +339,6 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: 'Education Mentor',
     organization: 'BMMK Telkom University',
     period: 'Okt 2025 - Mei 2026',
-    description:
-      'As a mentor, I participated in a large-scale mentoring program, which required all mentors and mentees from BMMK Telkom University to participate under the auspices of the BPA (Badan Penanggulangan Akademik). Here, I guided, led, and connected mentees.',
     responsibilities: [
       'Guided, led, and connected mentees under the auspices of the BPA (Badan Penanggulangan Akademik)',
       'Mentored participants through academic adaptation, peer discussions, and collaborative activities',

@@ -32,15 +32,20 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  longDescription: string;
+  longDescription?: string;
+  role?: string;
+  organization?: string;
   techStack: string[];
-  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics';
+  category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics' | 'Scientific Paper';
   image: string;
+  posterImage?: string;
   status: string;
   githubUrl?: string;
-  liveUrl: string;
-  features: string[];
+  liveUrl?: string;
+  features?: string[];
   essayUrl?: string;
+  isScientificPaper?: boolean;
+  paperAuthors?: string;
 }
 
 export interface AwardItem {

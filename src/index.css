@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@layer base {
+  *, ::before, ::after {
+    font-family: 'Courier Prime', Courier, monospace !important;
+  }
+  body {
+    font-family: 'Courier Prime', Courier, monospace !important;
+    background-color: #e2c28e;
+    color: #7A0000;
+  }
+  h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label {
+    font-family: 'Courier Prime', Courier, monospace !important;
+  }
+}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -17,12 +29,67 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Subtle micro-animation keyframes for ambient and interactive elements */
+@keyframes warm-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes warm-pulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.08);
+  }
+}
+
+.animate-warm-float {
+  animation: warm-float 6s ease-in-out infinite;
+}
+
+.animate-warm-pulse {
+  animation: warm-pulse 8s ease-in-out infinite;
+}
+
+/* Custom delicate scrollbar matching maroon & chocolate theme */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(122, 0, 0, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 0, 0, 0.55);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(224, 90, 103, 0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(224, 90, 103, 0.55);
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

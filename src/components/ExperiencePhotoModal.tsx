@@ -117,27 +117,27 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
 
           {/* Modal Window Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            initial={{ opacity: 0, scale: 0.94, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.94, y: 20 }}
+            exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-slate-800 overflow-hidden z-10 my-auto"
+            className="relative w-full max-w-2xl bg-[#f4ebdb] rounded-2xl sm:rounded-3xl shadow-2xl border border-[#7A0000]/25 overflow-hidden z-10 my-auto text-[#7A0000]"
             id={`experience-photo-modal-${experience.id}`}
           >
-            {/* Window Title Bar - dots on left, close button on right */}
-            <div className="px-4 sm:px-6 py-3.5 bg-gray-50/90 dark:bg-slate-800/80 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between">
+            {/* Window Title Bar */}
+            <div className="px-4 sm:px-6 py-3.5 bg-[#ebd7bc] border-b border-[#7A0000]/20 flex items-center justify-between">
               {/* Window Dots */}
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-red-400 inline-block" />
-                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400 inline-block" />
-                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-400 inline-block" />
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#7A0000] inline-block" />
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#8C5E3C] inline-block" />
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-600 inline-block" />
               </div>
 
               {/* Close Button */}
               <button
                 type="button"
                 onClick={onClose}
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 dark:bg-slate-700/60 text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors flex items-center justify-center cursor-pointer"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#f4ebdb] text-[#7A0000] hover:bg-[#ebd7bc] transition-colors flex items-center justify-center cursor-pointer border border-[#7A0000]/20"
                 title="Tutup (Esc)"
                 id="close-experience-photo-modal"
               >
@@ -149,7 +149,7 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
             <div className="p-4 sm:p-6 space-y-4">
               {/* Photo Display Frame with Next / Prev buttons and 5s auto slide */}
               <div
-                className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950 border border-gray-200 dark:border-slate-800 flex items-center justify-center min-h-[220px] max-h-[52vh] sm:max-h-[58vh] group select-none"
+                className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-black/90 border border-[#7A0000]/20 flex items-center justify-center min-h-[220px] max-h-[52vh] sm:max-h-[58vh] group select-none"
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
               >
@@ -161,7 +161,7 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                       initial={{ width: '0%' }}
                       animate={{ width: '100%' }}
                       transition={{ duration: 5, ease: 'linear' }}
-                      className="h-full bg-gradient-to-r from-red-500 to-[#7A0000]"
+                      className="h-full bg-gradient-to-r from-[#7A0000] via-[#8C5E3C] to-[#5C0612]"
                     />
                   </div>
                 )}
@@ -188,7 +188,7 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                       className="w-full h-auto max-h-[50vh] sm:max-h-[60vh] object-contain rounded-xl"
                     />
                   ) : (
-                    <div className="py-16 text-center text-gray-400">
+                    <div className="py-16 text-center text-[#7A0000]/60">
                       <ImageIcon className="w-12 h-12 mx-auto mb-2 opacity-50" />
                       <p className="text-xs">Belum ada foto dokumentasi</p>
                     </div>
@@ -247,7 +247,7 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                         onClick={() => setCurrentIndex(i)}
                         className={`h-2 rounded-full transition-all cursor-pointer ${
                           i === currentIndex
-                            ? 'w-6 bg-[#7A0000] dark:bg-red-400'
+                            ? 'w-6 bg-[#7A0000]'
                             : 'w-2 bg-white/50 hover:bg-white/80'
                         }`}
                         title={`Buka Foto ${i + 1}`}
@@ -260,28 +260,28 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
               {/* Experience Details */}
               <div className="pt-1">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-50 dark:bg-red-950/50 text-[#7A0000] dark:text-red-300 text-[10px] sm:text-xs font-bold">
-                    <Calendar className="w-3 h-3 text-[#7A0000] dark:text-red-400" />
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ebd7bc] text-[#7A0000] text-[10px] sm:text-xs font-bold border border-[#7A0000]/20">
+                    <Calendar className="w-3 h-3 text-[#7A0000]" />
                     <span>{experience.period}</span>
                   </span>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-extrabold text-gray-900 dark:text-white">
+                <h3 className="text-base sm:text-lg font-bold text-[#7A0000]">
                   {experience.role}
                 </h3>
 
-                <p className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-slate-300 flex items-center gap-1.5 mt-0.5">
-                  <Building2 className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400 shrink-0" />
+                <p className="text-xs sm:text-sm font-semibold text-[#7A0000]/80 flex items-center gap-1.5 mt-0.5">
+                  <Building2 className="w-3.5 h-3.5 text-[#7A0000] shrink-0" />
                   <span>{experience.organization}</span>
                 </p>
               </div>
 
               {/* Action Buttons: Status Badge, Full view, Next, and Close */}
-              <div className="pt-2 border-t border-gray-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+              <div className="pt-2 border-t border-[#7A0000]/15 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200/60 dark:border-red-900/40 text-[#7A0000] dark:text-red-300 text-xs font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Dokumentasi Resmi Terverifikasi</span>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#ebd7bc] border border-[#7A0000]/20 text-[#7A0000] text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                    <span>Dokumentasi Resmi</span>
                   </div>
 
                   {currentPhoto && (
@@ -289,10 +289,10 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                       href={currentPhoto}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-700 dark:text-slate-200 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
+                      className="px-3 py-1.5 rounded-xl bg-[#ebd7bc] hover:bg-[#e2c28e] text-[#7A0000] text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer border border-[#7A0000]/20"
                       title="Buka foto resolusi penuh di tab baru"
                     >
-                      <Eye className="w-3.5 h-3.5 text-[#7A0000] dark:text-red-400" />
+                      <Eye className="w-3.5 h-3.5 text-[#7A0000]" />
                       <span className="hidden sm:inline">Buka Resolusi Penuh</span>
                     </a>
                   )}
@@ -303,18 +303,18 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-3.5 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-800 dark:text-slate-100 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1"
+                      className="px-3.5 py-2 rounded-xl bg-[#ebd7bc] hover:bg-[#e2c28e] text-[#7A0000] text-xs font-bold transition-colors cursor-pointer flex items-center gap-1 border border-[#7A0000]/20"
                       id="modal-next-btn-footer"
                     >
                       <span>Next Foto</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-3.5 h-3.5 text-[#7A0000]" />
                     </button>
                   )}
 
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-5 py-2 rounded-xl bg-[#7A0000] hover:bg-[#990000] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                    className="px-5 py-2 rounded-xl bg-[#7A0000] hover:bg-[#60050E] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs active:scale-[0.98]"
                     id="close-modal-btn"
                   >
                     Tutup
