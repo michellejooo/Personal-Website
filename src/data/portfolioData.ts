@@ -262,9 +262,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-lo-kaspersky',
     role: 'Liaison Officer',
     organization: 'Telkom University x Kaspersky',
-    period: '2026',
-    description:
-      'Served as a Liaison Officer for HackNusa Hackathon , acting as a communication bridge between participants and the organizing committee. Guided participants throughout the competition, communicated updates, schedules, and important information, responded to inquiries, coordinated participant needs, and assisted in resolving issues to ensure a smooth and organized hackathon experience. (In collaboration with @kaspersky)',
+    period: 'Oct 2026',
     responsibilities: [
       'Served as a Liaison Officer for HackNusa Hackathon, acting as a communication bridge between participants and the organizing committee',
       'Guided participants throughout the competition, communicated updates, schedules, and important information',

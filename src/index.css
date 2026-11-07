@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
 @layer base {
-  *, ::before, ::after {
-    font-family: 'Courier Prime', Courier, monospace !important;
-  }
   body {
-    font-family: 'Courier Prime', Courier, monospace !important;
+    font-family: 'Courier Prime', Courier, monospace;
     background-color: #e2c28e;
     color: #7A0000;
   }
-  h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label {
-    font-family: 'Courier Prime', Courier, monospace !important;
+  h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label {
+    font-family: inherit;
   }
+}
+
+.font-special-elite {
+  font-family: 'Special Elite', cursive, monospace !important;
+}
+
+.font-ibm-mono {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.font-courier {
+  font-family: 'Courier Prime', Courier, monospace !important;
 }
 
 html {
