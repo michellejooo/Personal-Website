@@ -8,20 +8,10 @@ import { MoreSection } from './components/MoreSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { NotFoundView } from './components/NotFoundView';
-import { EssayModal } from './components/EssayModal';
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [show404, setShow404] = useState(false);
-  const [essayModalOpen, setEssayModalOpen] = useState(false);
-  const [activeEssayUrl, setActiveEssayUrl] = useState('https://drive.google.com/drive/folders/1example?usp=sharing');
-
-  const handleOpenEssay = (url?: string) => {
-    if (url) {
-      setActiveEssayUrl(url);
-    }
-    setEssayModalOpen(true);
-  };
 
   // Ensure dark class is removed since darkmode is disabled
   useEffect(() => {
@@ -52,11 +42,11 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#e2c28e] text-[#7A0000] transition-colors duration-300 selection:bg-[#7A0000] selection:text-white relative">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-retro-editorial text-[#850000] transition-colors duration-300 selection:bg-[#850000] selection:text-[#F3E4CC] relative">
       {/* Top Scroll Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-[#3D2314]/15 z-50 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[#850000]/10 z-50 pointer-events-none">
         <div
-          className="h-full bg-gradient-to-r from-[#7A0000] via-[#8C5E3C] to-[#7A0000] transition-all duration-150"
+          className="h-full bg-[#850000] transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -73,12 +63,12 @@ export default function App() {
         <SkillsSection />
 
         {/* Featured Projects */}
-        <ProjectsSection onOpenEssay={handleOpenEssay} />
+        <ProjectsSection />
 
         {/* Work & Leadership Experience */}
         <ExperienceSection />
 
-        {/* More: Fun Facts & Spotify Soundtrack */}
+        {/* More: Things Abt Me & Spotify Soundtrack */}
         <MoreSection />
 
         {/* Contact Form & Socials */}
@@ -87,13 +77,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Scientific Essay & Concept Paper Viewer Modal */}
-      <EssayModal
-        isOpen={essayModalOpen}
-        onClose={() => setEssayModalOpen(false)}
-        essayUrl={activeEssayUrl}
-      />
     </div>
   );
 }

@@ -49,7 +49,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
 
   return (
     <div
-      className="relative mt-3 mb-3 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer group/photo border border-[#7A0000]/20 bg-[#ebd7bc] shadow-xs select-none"
+      className="relative mt-3 mb-3 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer group/photo border border-[#D5B18C] bg-[#ebd7bc] shadow-xs select-none"
       id={`experience-photo-card-${experienceId}`}
       onClick={() => onOpenModal(currentIndex)}
       onMouseEnter={() => setIsHovered(true)}
@@ -64,7 +64,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 5, ease: 'linear' }}
-            className="h-full bg-gradient-to-r from-[#7A0000] via-[#8C5E3C] to-[#5C0612]"
+            className="h-full bg-[#850000]"
           />
         </div>
       )}
@@ -97,13 +97,13 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10 opacity-90 group-hover/photo:opacity-95 transition-opacity flex flex-col justify-between p-2.5 sm:p-3 pointer-events-none">
           {/* Top header row inside photo: Official badge & counter */}
           <div className="flex items-center justify-between">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-[#7A0000]/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/20 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-[#850000]/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-metadata font-bold border border-white/20 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Dokumentasi Resmi</span>
             </span>
 
             {images.length > 1 && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/10">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-metadata font-bold border border-white/10">
                 <span>{currentIndex + 1} / {images.length}</span>
               </span>
             )}
@@ -111,10 +111,10 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
 
           {/* Bottom caption and View badge */}
           <div className="flex items-end justify-between gap-2">
-            <span className="text-[10px] sm:text-[11px] font-semibold text-white/95 truncate pr-1">
+            <span className="text-[10px] sm:text-[11px] font-body font-semibold text-white/95 truncate pr-1">
               {role}
             </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/25 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold shrink-0">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/25 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-metadata font-bold shrink-0">
               <Eye className="w-3 h-3" />
               <span>View</span>
             </span>
@@ -156,7 +156,7 @@ export const ExperienceCardCarousel: React.FC<ExperienceCardCarouselProps> = ({
                   setCurrentIndex(i);
                 }}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                  i === currentIndex ? 'w-4 bg-[#7A0000]' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  i === currentIndex ? 'w-4 bg-[#850000]' : 'w-1.5 bg-white/50 hover:bg-white/80'
                 }`}
                 title={`Foto ${i + 1}`}
               />

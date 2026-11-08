@@ -3,11 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS_DATA } from '../data/portfolioData';
 import { Github, CheckCircle, FileText, ExternalLink, BookOpen, GraduationCap, Users, Code2, Eye, X, ZoomIn, Building2 } from 'lucide-react';
 
-interface ProjectsSectionProps {
-  onOpenEssay?: (essayUrl?: string) => void;
-}
-
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay }) => {
+export const ProjectsSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [selectedPoster, setSelectedPoster] = useState<{ title: string; image: string } | null>(null);
 
@@ -20,7 +16,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
   });
 
   return (
-    <section id="projects" className="py-12 sm:py-20 bg-[#3D2314]/5 dark:bg-[#140B07]/40 relative transition-colors">
+    <section id="projects" className="py-12 sm:py-20 bg-transparent relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto">
@@ -80,14 +76,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                 {/* Image Thumbnail Container - Compact on mobile */}
                 <div
                   className={`relative aspect-[16/10] sm:aspect-video max-h-40 sm:max-h-56 overflow-hidden bg-[#201815] group/thumb ${
-                    project.posterImage ? 'cursor-pointer' : ''
+                    project.posterImage || project.essayUrl ? 'cursor-pointer' : ''
                   }`}
                   onClick={() => {
                     if (project.posterImage) {
                       setSelectedPoster({ title: project.title, image: project.posterImage });
+                    } else if (project.essayUrl) {
+                      window.open(project.essayUrl, '_blank', 'noopener,noreferrer');
                     }
                   }}
-                  title={project.posterImage ? 'Klik untuk melihat poster proyek' : undefined}
+                  title={project.posterImage ? 'Klik untuk melihat poster proyek' : project.essayUrl ? 'Buka dokumen essay' : undefined}
                 >
                   <img
                     src={project.image}
@@ -116,6 +114,14 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white text-xs font-bold pointer-events-none">
                       <ZoomIn className="w-4 h-4 text-red-300" />
                       <span>Lihat Poster</span>
+                    </div>
+                  )}
+
+                  {/* Essay Click Indicator for cards with essayUrl */}
+                  {project.essayUrl && !project.posterImage && (
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white text-xs font-bold pointer-events-none">
+                      <FileText className="w-4 h-4 text-red-300" />
+                      <span>Buka Dokumen Essay</span>
                     </div>
                   )}
                 </div>
@@ -188,10 +194,35 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                     </div>
 
                     {/* Action Links */}
-                    {project.isScientificPaper ? (
-                      <div className="w-full py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-[#ebd7bc] text-[#7A0000] text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#7A0000]/20 select-none shadow-2xs">
-                        <BookOpen className="w-3.5 h-3.5 text-[#7A0000]" />
-                        <span>Scientific Research Paper</span>
+                    {project.essayUrl ? (
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={project.essayUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${
+                            project.githubUrl ? 'flex-1' : 'w-full'
+                          } py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-[#7A0000] hover:bg-[#60050E] text-white text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer active:scale-[0.98]`}
+                          title="Buka Dokumen Essay"
+                          id={`btn-essay-${project.id}`}
+                        >
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>View Essay</span>
+                          <ExternalLink className="w-3 h-3 opacity-80" />
+                        </a>
+                        {project.githubUrl && project.githubUrl !== '#' && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="py-2 sm:py-2.5 px-3 rounded-xl bg-[#ebd7bc] text-[#7A0000] hover:bg-[#dfc9aa] text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#7A0000]/20 transition-colors"
+                            title="View GitHub Repository"
+                            id={`btn-github-${project.id}`}
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">GitHub</span>
+                          </a>
+                        )}
                       </div>
                     ) : project.posterImage ? (
                       <div className="flex items-center gap-2">
@@ -219,39 +250,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenEssay })
                           </a>
                         )}
                       </div>
-                    ) : project.essayUrl ? (
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => {
-                            if (onOpenEssay) {
-                              onOpenEssay(project.essayUrl);
-                            } else if (project.essayUrl) {
-                              window.open(project.essayUrl, '_blank', 'noopener,noreferrer');
-                            }
-                          }}
-                          className={`${
-                            project.githubUrl ? 'flex-1' : 'w-full'
-                          } py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-[#7A0000] hover:bg-[#60050E] text-white text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer active:scale-[0.98]`}
-                          title="View Essay & Concept Paper"
-                          id={`btn-essay-${project.id}`}
-                        >
-                          <FileText className="w-3.5 h-3.5" />
-                          <span>View Essay</span>
-                          <ExternalLink className="w-3 h-3 opacity-80" />
-                        </button>
-                        {project.githubUrl && project.githubUrl !== '#' && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="py-2 sm:py-2.5 px-3 rounded-xl bg-[#ebd7bc] text-[#7A0000] hover:bg-[#dfc9aa] text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#7A0000]/20 transition-colors"
-                            title="View GitHub Repository"
-                            id={`btn-github-${project.id}`}
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                            <span className="hidden sm:inline">GitHub</span>
-                          </a>
-                        )}
+                    ) : project.isScientificPaper ? (
+                      <div className="w-full py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-[#ebd7bc] text-[#7A0000] text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#7A0000]/20 select-none shadow-2xs">
+                        <BookOpen className="w-3.5 h-3.5 text-[#7A0000]" />
+                        <span>Scientific Research Paper</span>
                       </div>
                     ) : (
                       <div className="flex items-center">

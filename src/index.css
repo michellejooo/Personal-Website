@@ -2,25 +2,42 @@
 
 @layer base {
   body {
-    font-family: 'Courier Prime', Courier, monospace;
-    background-color: #e2c28e;
-    color: #7A0000;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #E5C18F;
+    color: #850000;
   }
-  h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label {
-    font-family: inherit;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    letter-spacing: -0.02em;
   }
+}
+
+.font-heading {
+  font-family: 'Space Mono', monospace !important;
+}
+
+.font-body {
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.font-mono-code {
+  font-family: 'Space Mono', monospace !important;
+}
+
+.font-metadata {
+  font-family: 'DM Mono', monospace !important;
 }
 
 .font-special-elite {
   font-family: 'Special Elite', cursive, monospace !important;
 }
 
-.font-ibm-mono {
-  font-family: 'IBM Plex Mono', monospace !important;
-}
-
-.font-courier {
-  font-family: 'Courier Prime', Courier, monospace !important;
+.bg-retro-editorial {
+  background-color: #E5C18F;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(133, 0, 0, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 90% 75%, rgba(99, 53, 44, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 40%, rgba(243, 228, 204, 0.25) 0%, transparent 60%);
 }
 
 html {
