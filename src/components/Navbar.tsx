@@ -73,18 +73,17 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4">
-        {/* Real-time Current Time with Retro Editorial Stamp (without seconds, larger font) */}
+        {/* Brand Monogram Badge: JMT (Joanna Michelle Tambunan) */}
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F3E4CC] border border-[#D5B18C] text-[#850000] font-metadata text-sm sm:text-base font-bold tracking-wider select-none shadow-xs hover:border-[#850000]/60 transition-all shrink-0"
-          id="nav-current-time"
-          title="Current Time (WIB)"
+          className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F3E4CC] border border-[#D5B18C] text-[#850000] font-heading font-black text-sm sm:text-base tracking-widest select-none shadow-xs hover:border-[#850000]/60 hover:bg-[#ebd7bc] transition-all shrink-0 group cursor-pointer"
+          id="nav-brand-jmt"
+          title={`JMT (Joanna Michelle Tambunan)${timeString ? ` • ${timeString} WIB` : ''}`}
         >
           <span className="w-2 h-2 rounded-full bg-[#850000] inline-block animate-pulse shrink-0" />
-          <span className="tracking-widest">{timeString || '--:--'}</span>
-          <span className="text-xs sm:text-sm font-heading font-bold text-[#850000] uppercase tracking-normal">
-            WIB
+          <span className="font-heading font-black tracking-widest text-[#850000] text-sm sm:text-base group-hover:scale-105 transition-transform">
+            JMT
           </span>
         </a>
 
