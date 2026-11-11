@@ -31,21 +31,13 @@ export const PROFILE_DATA = {
   name: 'Joanna',
   title: 'Information Technology Student',
   avatar: profileAvatarImg,
-  subTitle: 'Joanna | AI & Data Analyst Enthusiast',
-  roles: ['Web Development Enthusiast', 'Prompt Engineer',],
-  introduction:
-    'IT Student at Telkom University specializing in Web Dev, Data Analysis, and AI. Strong leader and problem-solver, ready to adapt and contribute effectively in team or solo roles.',
-  technologyTags: [
-    'Web Development',
-    'AI Engineer',
-    'Data Analyst',
-  ],
+  subTitle: 'Joanna | Specialized in Web Dev & Data Analyst',
+  roles: ['Specialized in Web Dev & Data Analyst', 'Prompt Engineer'],
+  
   stats: [
     { label: 'Featured Projects', value: '2', sub: 'Web & Full Stack' },
-    { label: 'Certifications', value: '2', sub: 'Google AI & Data Analysis' },
+    { label: 'Certifications', value: '3', sub: 'Google AI, Python & IPB' },
   ],
-  aboutText:
-    'IT Student at Telkom University specializing in Web Dev, Data Analysis, and AI. Strong leader and problem-solver, ready to adapt and contribute effectively in team or solo roles.',
   contact: {
     email: 'joannatambunan496@gmail.com',
     location: 'Bandung, Indonesia',
@@ -222,6 +214,11 @@ export const PROJECTS_DATA: Project[] = [
     status: 'Live / Active',
     githubUrl: 'https://github.com/michellejooo/Personal-Website',
     liveUrl: '#',
+    proofPhotos: [
+      { url: projectPortfolioImg, caption: 'Website Portfolio — Halaman Profil & Header Joanna Tambunan' },
+      { url: '/images/personal_website_preview_1787275606212.jpg', caption: 'Website Portfolio — Showcase Proyek & Desain Retro Editorial' },
+      { url: '/images/portfolio_screenshot_1787274579243.jpg', caption: 'Website Portfolio — Tampilan Responsif & Proof of Skills' },
+    ],
     features: [
       'Sticky glassmorphism navbar with smooth section scroll',
       'Dual theme engine (Deep Red & White / Dark Slate)',
@@ -243,6 +240,10 @@ export const PROJECTS_DATA: Project[] = [
     category: 'Full Stack',
     image: caresPosterImg,
     posterImage: caresPosterImg,
+    proofPhotos: [
+      { url: caresPosterImg, caption: 'Official Poster — CARES Campus Facility Management Platform' },
+      { url: projectCaresImg, caption: 'Platform Dashboard & Laporan Fasilitas Kampus Telkom University' },
+    ],
     status: 'Active / Completed',
     githubUrl: 'https://github.com/Cares-Tel-U',
     liveUrl: '#',
@@ -267,10 +268,13 @@ export const PROJECTS_DATA: Project[] = [
     techStack: ['UI/UX Design', 'User Flow', 'Benchmarking', 'Biotechnology', 'Circular Economy', 'Scientific Writing'],
     category: 'Scientific Paper',
     image: '/assets/aistudio/image_8fff8bb1.png',
+    proofPhotos: [
+      { url: '/assets/aistudio/image_8fff8bb1.png', caption: 'Dokumen Resmi Essay Ilmiah BeAqua System — Aprotech Fair 2026' },
+      { url: '/assets/aistudio/sertifikat_aprotechfair_ipb.png', caption: 'Sertifikat Penghargaan Top 15 Finalist Aprotech Fair IPB 2026' },
+      { url: '/src/assets/images/beaqua_system_preview_1788883584017.jpg', caption: 'Diagram Alur Bioteknologi & Digital Traceability BeAqua System' },
+    ],
     status: 'Top 15 Finalist',
     isScientificPaper: true,
-    paperAuthors: 'Muhammad Rizi Adrika, Alya Aziza Puteri, Joanna Michelle Tambunan',
-    essayUrl: 'https://drive.google.com/drive/folders/1example?usp=sharing',
     features: [
       'Top 15 Finalist — Aprotech Fair 2026 Essay Competition',
       'Developed UI/UX prototype and platform user flow architecture',
@@ -417,6 +421,32 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     ],
     credentialId: '3TK9EE4VYH61',
     credentialUrl: 'https://coursera.org/verify/specialization/3TK9EE4VYH61',
+  },
+  {
+    id: 'cert-3',
+    title: 'Top 15 Finalist — Aprotech Fair IPB 2026 Essay Competition',
+    issuer: 'IPB University (HIMASILKAN)',
+    date: 'February 2026',
+    recipient: 'Joanna Michelle Tambunan',
+    image: '/assets/aistudio/sertifikat_aprotechfair_ipb.png',
+    credentialUrl: '/assets/aistudio/Sertifikat_Aprotechfair_IPB_c5cdca50.pdf',
+    credentialId: 'APROTECH-2026',
+    description:
+      'Recognized as a Top 15 Finalist in the Aprotech Fair IPB 2026 Essay Competition for the BeAqua System project, focusing on biotechnology integration and circular economy innovation to transform aquatic by-products into sustainable cosmetic active ingredients.',
+    topics: [
+      'Biotechnology Integration',
+      'Circular Economy',
+      'Aquatic By-Products',
+      'Cosmetic Active Ingredients',
+      'BeAqua System',
+      'Scientific Innovation',
+    ],
+    courses: [
+      'BlueTech Innovation: Exploring the Power of Aquatic By-Products',
+      'Scientific Writing & Competitive Benchmarking',
+      'UI/UX Prototype & Platform User Flow Modeling',
+      'Biotechnology & Bioactive Traceability Analysis',
+    ],
   },
 ];
 

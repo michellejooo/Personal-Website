@@ -8,6 +8,8 @@ import {
   Image as ImageIcon,
   ChevronLeft,
   ChevronRight,
+  Plus,
+  Trash2,
 } from 'lucide-react';
 import { ExperienceItem } from '../types';
 
@@ -18,7 +20,7 @@ interface ExperiencePhotoModalProps {
   images: string[];
   initialIndex?: number;
   onUploadPhoto?: (experienceId: string, photoUrl: string) => void;
-  onResetPhoto?: (experienceId: string) => void;
+  onRemovePhoto?: (experienceId: string, photoUrl: string) => void;
   isCustomPhoto?: boolean;
 }
 
@@ -28,9 +30,28 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
   experience,
   images = [],
   initialIndex = 0,
+  onUploadPhoto,
+  onRemovePhoto,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0 || !experience || !onUploadPhoto) return;
+
+    const file = files[0];
+    const reader = new FileReader();
+    reader.onload = (uploadEvent) => {
+      const base64Url = uploadEvent.target?.result as string;
+      if (!base64Url) return;
+      onUploadPhoto(experience.id, base64Url);
+      setCurrentIndex(0);
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  };
 
   // Sync initialIndex when modal opens or experience changes
   useEffect(() => {
@@ -278,11 +299,25 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
 
               {/* Action Buttons */}
               <div className="pt-2 border-t border-[#D5B18C] flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#ebd7bc] border border-[#D5B18C] text-[#850000] text-xs font-metadata font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                    <span>Dokumentasi Resmi</span>
-                  </div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {/* File Upload trigger */}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                    id={`input-upload-exp-photo-${experience.id}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-3 py-1.5 rounded-xl bg-[#F3E4CC] hover:bg-[#FAF5EB] text-[#850000] text-xs font-heading font-bold border border-[#D5B18C] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-[0.98]"
+                    title="Upload foto thumbnail / bukti baru untuk pengalaman ini"
+                  >
+                    <Plus className="w-3.5 h-3.5 text-[#850000]" />
+                    <span>+ Masukkan Foto</span>
+                  </button>
 
                   {currentPhoto && (
                     <a
@@ -293,8 +328,20 @@ export const ExperiencePhotoModal: React.FC<ExperiencePhotoModalProps> = ({
                       title="Buka foto resolusi penuh di tab baru"
                     >
                       <Eye className="w-3.5 h-3.5 text-[#850000]" />
-                      <span className="hidden sm:inline">Buka Resolusi Penuh</span>
+                      <span className="hidden sm:inline">Ukuran Penuh</span>
                     </a>
+                  )}
+
+                  {onRemovePhoto && currentPhoto && (
+                    <button
+                      type="button"
+                      onClick={() => onRemovePhoto(experience.id, currentPhoto)}
+                      className="px-2.5 py-1.5 rounded-xl bg-rose-900/10 hover:bg-rose-900/20 text-[#850000] text-xs font-heading font-semibold border border-rose-300/40 transition-colors flex items-center gap-1 cursor-pointer"
+                      title="Hapus foto kustom ini"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">Hapus</span>
+                    </button>
                   )}
                 </div>
 

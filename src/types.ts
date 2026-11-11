@@ -39,6 +39,7 @@ export interface Project {
   category: 'Web Development' | 'Full Stack' | 'UI/UX' | 'Data Analytics' | 'Scientific Paper';
   image: string;
   posterImage?: string;
+  proofPhotos?: { url: string; caption?: string }[];
   status: string;
   githubUrl?: string;
   liveUrl?: string;
@@ -87,6 +88,7 @@ export interface Certification {
   image?: string;
   courses?: string[];
   recipient?: string;
+  description?: string;
 }
 
 export interface LanguageItem {

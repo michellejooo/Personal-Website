@@ -185,8 +185,8 @@ export const SkillsSection: React.FC = () => {
             <div className="mt-2.5 w-12 h-1 bg-[#850000] mx-auto rounded-full" />
           </div>
 
-          {/* Square-style Certificates Grid on PC (Compact & Balanced) */}
-          <div className="mt-6 sm:mt-7 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 max-w-3xl mx-auto items-stretch">
+          {/* Square-style Certificates Grid on PC (Compact & Balanced for 3 items) */}
+          <div className="mt-6 sm:mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto items-stretch">
             {CERTIFICATIONS_DATA.map((cert, idx) => (
               <motion.div
                 key={cert.id}
@@ -224,9 +224,9 @@ export const SkillsSection: React.FC = () => {
                       </div>
                     </div>
 
-                    <span className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/80 text-white text-[8px] sm:text-[9px] font-medium flex items-center gap-1 shadow-sm">
-                      <Sparkles className="w-2 h-2 text-amber-400" />
-                      Coursera • Google
+                    <span className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/80 text-white text-[8px] sm:text-[9px] font-medium flex items-center gap-1 shadow-sm max-w-[85%] truncate">
+                      <Sparkles className="w-2 h-2 text-amber-400 shrink-0" />
+                      <span className="truncate">{cert.issuer}</span>
                     </span>
                   </div>
 
@@ -253,10 +253,17 @@ export const SkillsSection: React.FC = () => {
                     {cert.issuer} {cert.recipient ? `• ${cert.recipient}` : ''}
                   </p>
 
+                  {/* Optional certificate description */}
+                  {cert.description && (
+                    <p className="mt-1.5 text-[10px] sm:text-[11px] font-body text-[#63352C] line-clamp-3 leading-relaxed">
+                      {cert.description}
+                    </p>
+                  )}
+
                   {/* Key Topics Badges */}
                   {cert.topics && cert.topics.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1">
-                      {cert.topics.slice(0, 5).map((topic) => (
+                      {cert.topics.slice(0, 4).map((topic) => (
                         <span
                           key={topic}
                           className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#ebd7bc] text-[#850000] text-[9px] font-metadata font-medium border border-[#D5B18C]"
@@ -280,7 +287,7 @@ export const SkillsSection: React.FC = () => {
                       id={`btn-verify-cert-${cert.id}`}
                     >
                       <ExternalLink className="w-3 h-3" />
-                      <span>Verify</span>
+                      <span>{cert.credentialUrl.endsWith('.pdf') ? 'Open PDF' : 'Verify'}</span>
                     </a>
                   )}
                   <button
@@ -346,12 +353,19 @@ export const SkillsSection: React.FC = () => {
                   </div>
                 ) : null}
 
-                {/* Courses List */}
+                {/* Certificate Description */}
+                {selectedCert.description && (
+                  <div className="w-full mt-3 p-3 rounded-xl bg-[#F3E4CC] border border-[#D5B18C] text-xs font-body text-[#63352C] leading-relaxed">
+                    {selectedCert.description}
+                  </div>
+                )}
+
+                {/* Courses / Modules List */}
                 {selectedCert.courses && (
-                  <div className="w-full mt-4 p-3.5 rounded-xl bg-[#ebd7bc] border border-[#D5B18C]">
+                  <div className="w-full mt-3 p-3.5 rounded-xl bg-[#ebd7bc] border border-[#D5B18C]">
                     <p className="text-xs font-heading font-bold text-[#850000] mb-2 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#850000]" />
-                      <span>{selectedCert.courses.length} Specialization Courses Completed:</span>
+                      <span>{selectedCert.courses.length} Specialization Topics / Modules:</span>
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] font-body text-[#63352C]">
                       {selectedCert.courses.map((course, idx) => (
@@ -382,7 +396,11 @@ export const SkillsSection: React.FC = () => {
                       className="px-4 py-2 rounded-xl bg-[#850000] hover:bg-[#6b0000] text-[#F3E4CC] text-xs font-heading font-bold flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Verify on Coursera Official</span>
+                      <span>
+                        {selectedCert.credentialUrl.endsWith('.pdf')
+                          ? 'Open Original PDF Certificate'
+                          : 'Verify Official Credential'}
+                      </span>
                     </a>
                   )}
                   <button

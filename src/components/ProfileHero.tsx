@@ -60,42 +60,7 @@ const AnimatedCounter: React.FC<{ target: number; duration?: number }> = ({
 };
 
 export const ProfileHero: React.FC<ProfileHeroProps> = () => {
-  const typewriterPhrases = [
-    'an AI & Data Analyst Enthusiast',
-    'a Web Development Enthusiast',
-    'a Prompt Engineer',
-  ];
-
   const [avatarSrc, setAvatarSrc] = useState(PROFILE_AVATAR);
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentPhrase = typewriterPhrases[phraseIndex];
-    let timer: NodeJS.Timeout;
-
-    if (!isDeleting && currentText === currentPhrase) {
-      // Pause at full word before deleting
-      timer = setTimeout(() => setIsDeleting(true), 1800);
-    } else if (isDeleting && currentText === '') {
-      // Switch phrase and start typing again
-      setIsDeleting(false);
-      setPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length);
-    } else {
-      // Character by character typewriter speed
-      const speed = isDeleting ? 35 : 75;
-      timer = setTimeout(() => {
-        setCurrentText((prev) =>
-          isDeleting
-            ? currentPhrase.substring(0, prev.length - 1)
-            : currentPhrase.substring(0, prev.length + 1)
-        );
-      }, speed);
-    }
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, phraseIndex]);
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
@@ -121,7 +86,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
             className="lg:col-span-5 flex flex-col items-center lg:items-start justify-center"
           >
             {/* Polaroid Photo Card Container */}
-            <div className="relative w-full max-w-[290px] sm:max-w-[320px] md:max-w-[340px] mx-auto lg:mx-0 bg-[#FAF6EE] p-3.5 sm:p-4 pb-5 sm:pb-6 rounded-sm border border-[#D5B18C] shadow-[0_18px_36px_-6px_rgba(99,53,44,0.22),0_6px_16px_rgba(99,53,44,0.1)] transition-all group">
+            <div className="relative w-full max-w-[290px] sm:max-w-[320px] md:max-w-[340px] mx-auto lg:mx-0 bg-[#FAF6EE] p-3.5 sm:p-4 pb-8 sm:pb-10 rounded-sm border border-[#D5B18C] shadow-[0_18px_36px_-6px_rgba(99,53,44,0.22),0_6px_16px_rgba(99,53,44,0.1)] transition-all group">
               {/* Paper Washi Tape at Top Center */}
               <div
                 className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 sm:w-28 h-5 sm:h-6 bg-[#D5B18C]/65 border-y border-[#D5B18C] backdrop-blur-[1px] rotate-[-1deg] shadow-2xs pointer-events-none z-10"
@@ -139,7 +104,7 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
                       setAvatarSrc('/images/joanna_avatar_1785572098877.jpg');
                     }
                   }}
-                  alt="Joanna - this is me!!"
+                  alt="Joanna Michelle Tambunan"
                   className="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500"
                   referrerPolicy="no-referrer"
                   id="profile-avatar-img"
@@ -147,16 +112,6 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
 
                 {/* Subtle vintage photo glaze overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#63352C]/15 via-transparent to-transparent pointer-events-none" />
-              </div>
-
-              {/* Polaroid Bottom Caption Area: "this is me!!" */}
-              <div className="pt-3.5 sm:pt-4 text-center">
-                <p className="font-heading font-black text-base sm:text-lg text-[#850000] tracking-wide lowercase">
-                  this is me!!
-                </p>
-                <p className="text-[10px] sm:text-[11px] font-special-elite text-[#63352C] lowercase mt-0.5 tracking-tight">
-                  joanna michelle tambunan
-                </p>
               </div>
             </div>
           </motion.div>
@@ -174,16 +129,14 @@ export const ProfileHero: React.FC<ProfileHeroProps> = () => {
               <span>Hello, I&apos;m <span className="text-[#850000] underline decoration-[#850000]/40">Joanna Tambunan</span></span>
             </div>
 
-            {/* Primary Dynamic Headline in Space Mono Bold */}
-            <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-heading font-bold text-[#850000] tracking-tight leading-snug min-h-[36px] sm:min-h-[52px] flex items-center flex-wrap" id="profile-name-title">
-              <span className="mr-2 text-[#850000]">I&apos;m</span>
-              <span className="text-[#850000] underline decoration-[#850000]/30">{currentText}</span>
-              <span className="inline-block w-1 sm:w-1.5 h-6 sm:h-9 bg-[#850000] ml-1.5 animate-pulse rounded-full" />
+            {/* Primary Headline: About me */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#850000] tracking-tight leading-tight" id="profile-name-title">
+              About me
             </h1>
 
-            {/* Bio / Introduction in DM Sans for effortless legibility */}
-            <p className="mt-4 sm:mt-5 font-body text-sm sm:text-base lg:text-lg text-[#63352C] leading-relaxed">
-              {PROFILE_DATA.introduction}
+            {/* Bio Paragraph */}
+            <p className="mt-3.5 sm:mt-4 font-body text-xs sm:text-sm md:text-base text-[#63352C] leading-relaxed text-justify sm:text-left">
+              Focusing on Data Analytics, with experience in data interpretation, data processing, and developing data-driven projects using Python and analytical tools. Skilled in exploring datasets, identifying patterns, generating insights, and supporting data-driven decision-making. Experienced in working on data analytics projects and applying problem-solving skills to deliver meaningful insights. Also equipped with foundational experience in Web Development through developing and implementing website projects.
             </p>
 
             {/* Call To Action Buttons */}
