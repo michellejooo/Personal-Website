@@ -5,7 +5,6 @@ import { SkillsSection } from './components/SkillsSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { MoreSection } from './components/MoreSection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { NotFoundView } from './components/NotFoundView';
 
@@ -68,11 +67,8 @@ export default function App() {
         {/* Work & Leadership Experience */}
         <ExperienceSection />
 
-        {/* More: Things Abt Me & Spotify Soundtrack */}
+        {/* More: Things That Isn't On My Resume & Spotify Soundtrack */}
         <MoreSection />
-
-        {/* Contact Form & Socials */}
-        <ContactSection />
       </main>
 
       {/* Footer */}

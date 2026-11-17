@@ -26,7 +26,7 @@ export const MoreSection: React.FC = () => {
             <span>✦ things abt me</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-bold text-[#850000] tracking-tight lowercase">
-            things abt me that dont have in resume
+            things that isn&apos;t on my resume
           </h2>
           <p className="mt-1 text-xs sm:text-sm text-[#63352C] lowercase font-special-elite">
             a personal typewriter journal note &amp; my favorite study soundtrack

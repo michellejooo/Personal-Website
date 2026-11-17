@@ -18,16 +18,6 @@ export const ProjectsSection: React.FC = () => {
     return project.category === activeFilter;
   });
 
-  const getProjectPhotosCount = (project: Project): number => {
-    if (project.proofPhotos && project.proofPhotos.length > 0) {
-      return project.proofPhotos.length;
-    }
-    let count = 0;
-    if (project.posterImage) count++;
-    if (project.image && project.image !== project.posterImage) count++;
-    return count > 0 ? count : (project.image ? 1 : 0);
-  };
-
   return (
     <section id="projects" className="py-12 sm:py-20 bg-transparent relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,10 +65,7 @@ export const ProjectsSection: React.FC = () => {
           }`}
         >
           <AnimatePresence>
-            {filteredProjects.map((project) => {
-              const photoCount = getProjectPhotosCount(project);
-
-              return (
+            {filteredProjects.map((project) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -115,12 +102,6 @@ export const ProjectsSection: React.FC = () => {
                     <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-[#7A0000] backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg flex items-center gap-1 shadow-sm">
                       {project.isScientificPaper && <BookOpen className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-red-200" />}
                       <span>{project.category}</span>
-                    </div>
-
-                    {/* Photo Count Tag on bottom left of thumbnail */}
-                    <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-black/75 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full flex items-center gap-1 shadow-sm">
-                      <Images className="w-3 h-3 text-red-300" />
-                      <span>{photoCount} Bukti Foto</span>
                     </div>
 
                     {/* Hover indicator */}
@@ -211,7 +192,7 @@ export const ProjectsSection: React.FC = () => {
                           id={`btn-photos-${project.id}`}
                         >
                           <Images className="w-3.5 h-3.5" />
-                          <span>Bukti Foto ({photoCount})</span>
+                          <span>Lihat Bukti Foto</span>
                         </button>
 
                         {/* Optional View Essay Link */}
@@ -248,8 +229,7 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
                 </motion.div>
-              );
-            })}
+            ))}
           </AnimatePresence>
         </motion.div>
       </div>

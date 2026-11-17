@@ -121,33 +121,6 @@ export const SKILL_GROUPS_DATA: SkillGroup[] = [
     ],
   },
   {
-    id: 'website-development',
-    title: 'Website Development',
-    subtitle: 'Full-stack web architecture with heavy focus on modern back-end engineering',
-    badge: 'Back-End & Web',
-    iconName: 'Server',
-    subGroups: [
-      {
-        label: 'Back-End Development',
-        skills: [
-          { name: 'TypeScript', iconName: 'Code', description: 'Strict type safety, object modeling & scalable server code', highlight: true },
-          { name: 'PostgreSQL', iconName: 'Database', description: 'ACID-compliant relational database, indexing & relational models', highlight: true },
-          { name: 'ORM Prisma', iconName: 'Layers', description: 'Type-safe database ORM, data migrations & schema generation', highlight: true },
-          { name: 'Node.js', iconName: 'Server', description: 'Asynchronous event-driven server runtime' },
-          { name: 'Express.js', iconName: 'Network', description: 'RESTful API routing, controllers & middleware architecture' },
-        ],
-      },
-      {
-        label: 'Front-End & UI/UX',
-        skills: [
-          { name: 'React', iconName: 'Component', description: 'Modern reactive component hierarchy & custom hooks' },
-          { name: 'Tailwind CSS', iconName: 'Palette', description: 'Utility-first responsive layouts & design systems' },
-          { name: 'UX Researcher', iconName: 'Search', description: 'User flow structuring, usability testing & visual prototypes' },
-        ],
-      },
-    ],
-  },
-  {
     id: 'programming-languages',
     title: 'Programming Languages',
     subtitle: 'Core programming languages powering backend services, algorithms & data systems',

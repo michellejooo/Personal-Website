@@ -94,7 +94,7 @@ export const SkillsSection: React.FC = () => {
         </div>
 
         {/* Grouped Skills Cards Grid */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start">
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch">
           {SKILL_GROUPS_DATA.map((group, groupIdx) => {
             const GroupIcon = ICON_MAP[group.iconName] || Boxes;
             const totalSkillsInGroup = group.subGroups.reduce(

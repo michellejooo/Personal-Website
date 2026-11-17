@@ -6,8 +6,7 @@ export const NAV_ITEMS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Things Abt Me', href: '#more' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'More', href: '#more' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -73,18 +72,15 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4">
-        {/* Brand Monogram Badge: JMT (Joanna Michelle Tambunan) */}
+        {/* Brand Monogram: JMT (Joanna Michelle Tambunan) */}
         <a
           href="#profile"
           onClick={(e) => handleNavClick(e, '#profile')}
-          className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F3E4CC] border border-[#D5B18C] text-[#850000] font-heading font-black text-sm sm:text-base tracking-widest select-none shadow-xs hover:border-[#850000]/60 hover:bg-[#ebd7bc] transition-all shrink-0 group cursor-pointer"
+          className="font-heading font-black text-base sm:text-lg text-[#850000] tracking-widest select-none hover:opacity-80 transition-opacity shrink-0 cursor-pointer px-1 py-1"
           id="nav-brand-jmt"
           title={`JMT (Joanna Michelle Tambunan)${timeString ? ` • ${timeString} WIB` : ''}`}
         >
-          <span className="w-2 h-2 rounded-full bg-[#850000] inline-block animate-pulse shrink-0" />
-          <span className="font-heading font-black tracking-widest text-[#850000] text-sm sm:text-base group-hover:scale-105 transition-transform">
-            JMT
-          </span>
+          JMT
         </a>
 
         {/* Navigation Links - Soft Cream Pill Background with Burgundy Active State */}
@@ -132,7 +128,7 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-[#F3E4CC]/98 backdrop-blur-xl border-b border-[#D5B18C] shadow-xl px-4 sm:px-8 py-5 flex flex-col gap-2 transition-all">
           <div className="max-w-7xl mx-auto w-full">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pb-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 pb-1">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.substring(1);
                 const isActive = activeSection === sectionId;

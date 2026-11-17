@@ -143,9 +143,6 @@ export const ProjectPhotoModal: React.FC<ProjectPhotoModalProps> = ({
                   <span className="px-2 py-0.5 rounded-full bg-[#850000] text-[#F3E4CC] text-[9px] sm:text-[10px] font-metadata font-bold uppercase tracking-wider">
                     {project.category}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-[#ebd7bc] text-[#850000] text-[9px] sm:text-[10px] font-metadata font-semibold border border-[#D5B18C]">
-                    {allPhotos.length} Bukti Foto
-                  </span>
                 </div>
                 <h3 className="text-xs sm:text-base font-heading font-bold text-[#850000] truncate mt-0.5 max-w-[260px] sm:max-w-md md:max-w-lg">
                   {project.title}
